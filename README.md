@@ -1,0 +1,2 @@
+# scm
+Scala CITE manager
