@@ -17,4 +17,7 @@ Status:  **early development**. [Release notes](releases.md)
 
 ## Using, building, testing
 
-To build from source and test, use normal sbt commands (`compile`, `test` ...).
+To build from source and test, use normal sbt commands (`compile`, `test` ...)
+
+Apply a task to all cross-compiled versions by preceding it with `+ `
+
