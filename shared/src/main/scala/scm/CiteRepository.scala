@@ -52,13 +52,11 @@ object CiteRepository {
       typeList.indexOf("ctscatalog") match {
         case -1 => None
         case _ =>  {
-          // omit both secrtion label and column header
+          // omit section labels
           val catalogString = sections(typeList.indexOf("ctscatalog"))
           val catalogData = catalogString.split("\n").drop(1).mkString("\n")
-
-
-          println("CATALOG DATA: " + catalogData)
           val catalog = Catalog(catalogData)
+
           val corpusString = sections(typeList.indexOf("ctsdata"))
           val corpusData = corpusString.split("\n").drop(1).mkString("\n")
           val corpus = Corpus(corpusData, delimiter)
@@ -69,5 +67,5 @@ object CiteRepository {
 
     CiteRepository(metadataMap("name"),metadataMap("version"),metadataMap("license"), textRepo)
   }
-  
+
 }
