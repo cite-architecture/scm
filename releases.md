@@ -1,5 +1,6 @@
 # Releases
 
+**1.3**:  Adds option of using `LocalFileConverter` with a single properties file.
 
 **1.2**:  Adds `LocalFileConverter` for instantiating repository objects and generating CEX Strings from data in local files in a variety of formats.
 
