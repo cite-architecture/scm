@@ -1,5 +1,8 @@
 # Releases
 
+
+**1.2**:  Adds `LocalFileConverter` for instantiating repository objects and generating CEX Strings from data in local files in a variety of formats.
+
 **1.1**: Adds `CiteRepositorySource` for reading `.cex` data and instantiating a `CiteRepository` from a local file.
 
 
