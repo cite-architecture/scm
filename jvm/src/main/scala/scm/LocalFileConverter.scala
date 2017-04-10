@@ -10,7 +10,7 @@ import scala.io.Source
 */
 object  LocalFileConverter {
 
-  /** Create a [[TextRepository]] from cataloged local files.
+  /** Create a `TextRepository` from cataloged local files.
   *
   * @param invFileName Name of XML file validating against CTS TextInventory schema.
   * @param configFileName Name of XML file validating against CTS CitationConfiguration schema.
@@ -21,7 +21,7 @@ object  LocalFileConverter {
   }
 
 
-  /** Create a [[TextRepository]] from cataloged local files
+  /** Create a `TextRepository` from cataloged local files
   * identified with a single property file.
   *
   * @param propertiesFile File in java property file format
