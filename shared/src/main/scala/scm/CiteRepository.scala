@@ -7,6 +7,14 @@ import scala.scalajs.js
 import js.annotation.JSExport
 
 
+
+/** A repository of citable scholarly resources.
+*
+* @param name Name of the citable data set.
+* @param version Version identifier.
+* @param license Licensing of the data.
+* @param textRepository Optional, cataloged corpus of citable texts.
+*/
 @JSExport  case class  CiteRepository (name: String, version: String, license: String, textRepository: Option[TextRepository] = None ) {
 
   /** True if TextRepository is instantiated.
@@ -27,6 +35,11 @@ import js.annotation.JSExport
 object CiteRepository {
 
 
+  /** Create a [[CiteRepository]].
+  *
+  * @param cex Data in CITE Exchange format.
+  * @param delimiter String value delimiting columns of CEX data.
+  */
   def apply(cex: String, delimiter: String)  : CiteRepository = {
     val sections = cex.split("#!").filter(_.nonEmpty)
     val typeList = sections.map(_.split("\n")(0))
@@ -54,9 +67,7 @@ object CiteRepository {
       }
     }
 
-
-
     CiteRepository(metadataMap("name"),metadataMap("version"),metadataMap("license"), textRepo)
-
   }
+  
 }
