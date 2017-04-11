@@ -55,7 +55,7 @@ object CiteRepository {
           // omit section labels
           val catalogString = sections(typeList.indexOf("ctscatalog"))
           val catalogData = catalogString.split("\n").drop(1).mkString("\n")
-          val catalog = Catalog(catalogData)
+          val catalog = Catalog(catalogData,delimiter)
 
           val corpusString = sections(typeList.indexOf("ctsdata"))
           val corpusData = corpusString.split("\n").drop(1).mkString("\n")
