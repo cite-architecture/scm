@@ -6,7 +6,7 @@ import scala.language.postfixOps
 *
 * The [[CiteRepository]] class contains metadata about a repository, and may optionally contain `TextRepository` or other CITE repository objects.
 *
-* The [[LocalFileConverter]] object includes methods for creating CEX
+* In the JVM branch, the `LocalFileConverter` object includes methods for creating CEX
 * representations of repositories stored in various formats.
 */
 package object scm {
