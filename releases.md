@@ -1,5 +1,9 @@
 # Releases
 
+**1.3.3**: Fixes a bug where correct delimiter was not being passed to Catalog constructor, and adds unit tests.
+
+**1.3.2**: Fixes some formatting in API documentation.
+
 **1.3.1**: Minor adjustments of imports.  Adds complete API documentation.
 
 **1.3.0**:  Adds option of using `LocalFileConverter` with a single properties file.
