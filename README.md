@@ -27,3 +27,9 @@ Main classes:
 
 1. a `CiteRepository` contains metadata about a repository, and may optionally contain `TextRepository` or other CITE repository objects.  Create a `CiteRepository` from text formatted in CITE Exchange (`cex`) format, or use a `CiteRepositorySource` to create a `CiteRepository` from a file in `.cex` format.
 2. the `LocalFileConverter` can create CEX representations of repositories from local files.  For texts, the  `LocalFileConverter` can create either a `TextRepository` object or a CEX strings from XML text files cataloged with a CTS TextInventory and CitationConfiguration file.
+
+
+To use these classes in your own encode, import both `edu.holycross.shot.ohco2._` (available from jcenter), and `edu.holycross.shot.hocuspocus._`, available from the nexus repository at beta.hppc.uh.edu.  E.g., with sbt, include these resolvers in your build file:
+
+    resolvers += Resolver.jcenterRepo,
+    resolvers += "beta" at "http://beta.hpcc.uh.edu/nexus/content/repositories/releases"
