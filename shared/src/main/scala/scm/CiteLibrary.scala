@@ -15,7 +15,7 @@ import js.annotation.JSExport
 * @param license Licensing of the data.
 * @param textRepository Optional, cataloged corpus of citable texts.
 */
-@JSExport  case class  CiteRepository (name: String, version: String, license: String, textRepository: Option[TextRepository] = None ) {
+@JSExport  case class  CiteLibrary (name: String, version: String, license: String, textRepository: Option[TextRepository] = None ) {
 
   /** True if TextRepository is instantiated.
   */
@@ -26,21 +26,30 @@ import js.annotation.JSExport
     }
   }
 
+/*
+  def find(s: String): Corpus = {
+    textRepository match {
+      case None => Corpus(Vector.empty)
+      case _ => Corpus(textRepository.find(s))
+    }
+  }
+  */
+
 }
 
 
-/** Factory for creating [[CiteRepository]] objects from
+/** Factory for creating [[CiteLibrary]] objects from
 * a String in CEX format.
 */
-object CiteRepository {
+object CiteLibrary {
 
 
-  /** Create a [[CiteRepository]].
+  /** Create a [[CiteLibrary]].
   *
   * @param cex Data in CITE Exchange format.
   * @param delimiter String value delimiting columns of CEX data.
   */
-  def apply(cex: String, delimiter: String)  : CiteRepository = {
+  def apply(cex: String, delimiter: String)  : CiteLibrary = {
     val sections = cex.split("#!").filter(_.nonEmpty)
     val typeList = sections.map(_.split("\n")(0))
 
@@ -65,7 +74,7 @@ object CiteRepository {
       }
     }
 
-    CiteRepository(metadataMap("name"),metadataMap("version"),metadataMap("license"), textRepo)
+    CiteLibrary(metadataMap("name"),metadataMap("version"),metadataMap("license"), textRepo)
   }
 
 }

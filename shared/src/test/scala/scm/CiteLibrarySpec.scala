@@ -1,16 +1,16 @@
 package edu.holycross.shot.scm
 import org.scalatest.FlatSpec
 
-class CiteRepositorySpec extends FlatSpec {
+class CiteLibrarySpec extends FlatSpec {
 
-  "A CiteRepository" should "support building a metadata set with no repositories" in {
+  "A CiteLibrary" should "support building a metadata set with no repositories" in {
 
     val cex = """#!citerepo
 name#demo
 version#2017.1
 license#public domain
 """
-    val citeRepo = CiteRepository(cex,"#")
+    val citeRepo = CiteLibrary(cex,"#")
     assert(citeRepo.name == "demo")
     assert(citeRepo.version == "2017.1")
     assert(citeRepo.license == "public domain")
@@ -30,7 +30,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 """
 
 
-    val citeRepo = CiteRepository(cex,"#")
+    val citeRepo = CiteLibrary(cex,"#")
     assert(citeRepo.hasTexts)
   }
 
