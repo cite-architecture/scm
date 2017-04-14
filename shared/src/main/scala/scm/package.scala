@@ -4,7 +4,7 @@ import scala.language.postfixOps
 /**
 * Provides classes for managing a collection of citable resources.
 *
-* The [[CiteRepository]] class contains metadata about a repository, and may optionally contain `TextRepository` or other CITE repository objects.
+* The [[CiteLibrary]] class contains metadata about a repository, and may optionally contain `TextRepository` or other CITE repository objects.
 *
 * In the JVM branch, the `LocalFileConverter` object includes methods for creating CEX
 * representations of repositories stored in various formats.
