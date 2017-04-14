@@ -1,26 +1,28 @@
 package edu.holycross.shot.scm
 import org.scalatest.FlatSpec
 
+import edu.holycross.shot.cite._
+
 class CiteLibrarySpec extends FlatSpec {
 
   "A CiteLibrary" should "support building a metadata set with no repositories" in {
 
-    val cex = """#!citerepo
+    val cex = """#!citelibrary
 name#demo
-version#2017.1
+urn#urn:cite2:cex:democex.2017_1:test
 license#public domain
 """
-    val citeRepo = CiteLibrary(cex,"#")
-    assert(citeRepo.name == "demo")
-    assert(citeRepo.version == "2017.1")
-    assert(citeRepo.license == "public domain")
+    val citeLib = CiteLibrary(cex,"#")
+    assert(citeLib.name == "demo")
+    //assert(citeLib.urn == Cite2Urn("urn:cite2:cex:democex.2017_1:test"))
+    assert(citeLib.license == "public domain")
   }
 
   it should "support building a text repository from a CEX source string" in {
 
-    val cex = """#!citerepo
+    val cex = """#!citelibrary
 name#demo
-version#2017.1
+urn#urn:cite2:cex:testcoll:hdt1node
 license#public domain
 #!ctscatalog
 urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online

@@ -1,6 +1,6 @@
-#!citerepo
+#!citelibrary
 name#demo
-version#2017.1
+urn#urn:cite2:cex:democex.2017_1:millextract
 license#CC Share Alike.  For details, see more info.
 #!ctscatalog
 urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online
