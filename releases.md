@@ -1,5 +1,7 @@
 # Releases
 
+**2.0.2**: Corrects yet another linking error in API documentation.
+
 **2.0.1**: Corrects an error in API documentation.
 
 **2.0.0**:  API breaking change in name of`CiteLibrary` class.  Support for version 7.4 of `ohco2` library and version 2.0 of `cex` parsing library simpifies access to data in CEX format, and improves validation of TextRepository contents.

@@ -6,7 +6,7 @@ import scala.io.Source
 */
 object  CiteLibrarySource {
 
-  /** Create [[CiteRepository]] from file in CEX format.
+  /** Create [[CiteLibrary]] from file in CEX format.
   *
   * @param fileName File of CEX data.
   * @param delimiter String value delimiting columns of CEX data.
