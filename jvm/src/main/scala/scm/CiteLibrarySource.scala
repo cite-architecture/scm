@@ -2,7 +2,7 @@ package edu.holycross.shot.scm
 
 import scala.io.Source
 
-/** Factory for [[CiteRepository]] objects.
+/** Factory for [[CiteLibrary]] objects.
 */
 object  CiteLibrarySource {
 

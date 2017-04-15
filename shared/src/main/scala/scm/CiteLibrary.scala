@@ -2,6 +2,7 @@ package edu.holycross.shot.scm
 
 import edu.holycross.shot.cite._
 import edu.holycross.shot.ohco2._
+import edu.holycross.shot.citeobj._
 import edu.holycross.shot.cex._
 
 import scala.scalajs.js
@@ -9,14 +10,17 @@ import js.annotation.JSExport
 
 
 
-/** A repository of citable scholarly resources.
+/** A library of citable scholarly resources.
 *
-* @param name Name of the citable data set.
-* @param version Version identifier.
-* @param license Licensing of the data.
+* @param name Name of the citable library.
+* @param urn URN identifying the library.
+* @param license Licensing and rights information.
 * @param textRepository Optional, cataloged corpus of citable texts.
+* @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
 */
-@JSExport  case class  CiteLibrary (name: String, urn: Cite2Urn, license: String, textRepository: Option[TextRepository] = None ) {
+@JSExport  case class  CiteLibrary (name: String, urn: Cite2Urn, license: String, textRepository: Option[TextRepository] = None,
+collectionRepository: Option[CiteCollectionRepository] = None
+ ) {
 
   /** True if TextRepository is instantiated.
   */
@@ -69,8 +73,8 @@ object CiteLibrary {
       }
     }
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo)
-
+    val collectionRepo = None
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo)
   }
 
 }

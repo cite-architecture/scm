@@ -1,11 +1,11 @@
 name := "Scala CITE manager"
 
 //crossScalaVersions := Seq("2.10.6","2.11.8", "2.12.1")
+//crossScalaVersions := Seq("2.10.6","2.11.8")
 
-
-
-crossScalaVersions := Seq("2.10.6","2.11.8")
-
+//crossScalaVersions := Seq("2.11.8", "2.12.1")
+crossScalaVersions := Seq("2.11.8")
+scalaVersion := "2.11.8"
 
 lazy val root = project.in(file(".")).
     aggregate(crossedJVM, crossedJS).
@@ -19,7 +19,7 @@ lazy val crossed = crossProject.in(file(".")).
     settings(
       name := "scm",
       organization := "edu.holycross.shot",
-      version := "2.0.2",
+      version := "2.1.0",
       licenses += ("GPL-3.0",url("https://opensource.org/licenses/gpl-3.0.html")),
       resolvers += Resolver.jcenterRepo,
       resolvers += "beta" at "http://beta.hpcc.uh.edu/nexus/content/repositories/releases",
@@ -28,7 +28,8 @@ lazy val crossed = crossProject.in(file(".")).
         "org.scala-js" %% "scalajs-stubs" % scalaJSVersion % "provided",
         "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
         "edu.holycross.shot.cite" %%% "xcite" % "2.2.3",
-        "edu.holycross.shot" %%% "ohco2" % "7.4.0",
+        "edu.holycross.shot" %%% "ohco2" % "8.0.0",
+        "edu.holycross.shot" %%% "citeobj" % "0.1.0",
         "edu.holycross.shot" %%% "cex" % "2.0.0"
       )
     ).
