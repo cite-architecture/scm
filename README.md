@@ -15,7 +15,19 @@ Status:  **active development**. [Release notes](releases.md)
 
 [GPL 3.0](https://opensource.org/licenses/gpl-3.0.html)
 
-## Building and testing
+## Using, building and testing
+
+`scm` is compiled for both the JVM and ScalaJS using scala 2.11.  Binaries for all platforms are available from jcenter.  If you are using sbt, include `Resolver.jcenterRepo`in your list of resolvers
+
+    resolvers += Resolver.jcenterRepo
+
+and  add this to your library dependencies:
+
+    "edu.holycross.shot.cite" %% "scm" % VERSION
+
+For maven, ivy or gradle equivalents, refer to <https://bintray.com/neelsmith/maven/ohco2>.
+
+
 
 To build from source and test, use normal sbt commands (`compile`, `test` ...)
 
