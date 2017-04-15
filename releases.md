@@ -1,6 +1,8 @@
 # Releases
 
-**2.1.0**: Updates `ohco2` dependency to version 8.0.  This adds new functionality to the library's text repository especially related to tokenization of text contents.  Adds placeholder for planned CiteCollectionRepository option. 
+**2.1.1**: Documents test data sets more thoroughly in coordination with github project wiki.
+
+**2.1.0**: Updates `ohco2` dependency to version 8.0.  This adds new functionality to the library's text repository especially related to tokenization of text contents.  Adds placeholder for planned CiteCollectionRepository option.
 
 **2.0.2**: Corrects yet another linking error in API documentation.
 
