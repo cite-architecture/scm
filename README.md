@@ -31,5 +31,5 @@ For maven, ivy or gradle equivalents, refer to <https://bintray.com/neelsmith/ma
 
 To build from source and test, use normal sbt commands (`compile`, `test` ...)
 
-Apply a task to all cross-compiled versions by preceding it with `+ `.  For example, y+ test"`
+Apply a task to all cross-compiled versions by preceding it with `+ `.  For example, `sbt "+ test"`
 
