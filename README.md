@@ -33,3 +33,6 @@ To build from source and test, use normal sbt commands (`compile`, `test` ...)
 
 Apply a task to all cross-compiled versions by preceding it with `+ `.  For example, `sbt "+ test"`
 
+## Documentation and examples of usage
+
+See the [project wiki](https://github.com/cite-architecture/scm/wiki).
