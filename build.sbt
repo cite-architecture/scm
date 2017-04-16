@@ -28,7 +28,7 @@ lazy val crossed = crossProject.in(file(".")).
         "org.scala-js" %% "scalajs-stubs" % scalaJSVersion % "provided",
         "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
         "edu.holycross.shot.cite" %%% "xcite" % "2.2.3",
-        "edu.holycross.shot" %%% "ohco2" % "8.0.0",
+        "edu.holycross.shot" %%% "ohco2" % "8.0.1",
         "edu.holycross.shot" %%% "citeobj" % "0.1.0",
         "edu.holycross.shot" %%% "cex" % "2.0.0"
       )
