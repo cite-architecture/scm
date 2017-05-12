@@ -58,12 +58,12 @@ object CiteLibrary {
     val cex = CexParser(cexString)
 
 
-    val libContent = cex.block("citelibrary").getOrElse("").split("\n").toVector
+    val libContent = cex.block("citelibrary").flatMap(_.split("\n")) //.getOrElse("").split("\n").toVector
     val libPairs = libContent.map(_.split(delimiter)).filter(_.size == 2).map(ar => ar(0) -> ar(1))
     val libMap = libPairs.toMap
 
-    val catalog = Catalog(cex.block("ctscatalog").getOrElse(""),delimiter)
-    val corpus = Corpus(cex.block("ctsdata").getOrElse(""), delimiter)
+    val catalog = Catalog(cex.block("ctscatalog").mkString("\n"),delimiter)
+    val corpus = Corpus(cex.block("ctsdata").mkString("\n"), delimiter)
 
     val textRepo = {
       if ((catalog.size > 0) && (corpus.size > 0)) {

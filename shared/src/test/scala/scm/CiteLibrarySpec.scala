@@ -18,6 +18,7 @@ license#public domain
     assert(citeLib.license == "public domain")
   }
 
+
   it should "support building a text repository from a CEX source string" in {
 
     val cex = """#!citelibrary

@@ -1,5 +1,7 @@
 # Releases
 
+**2.2.0**: Supports version 3.0 of CEX specification, including creation of `CiteCollectionRepository`s.
+
 **2.1.2**:  Adds tests for generating corpus from markdown source.
 
 **2.1.1**: Updates `ohco2` dependency to version 8.0.1.  Documents test data sets more thoroughly in coordination with github project wiki.
