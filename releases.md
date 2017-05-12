@@ -1,6 +1,6 @@
 # Releases
 
-**2.2.0**: Supports version 3.0 of CEX specification, including creation of `CiteCollectionRepository`s.
+**3.0.0**: Supports version 3.0 of CEX specification, including creation of `CiteCollectionRepository`s.  Constructing a `CiteLibary` now requires specification of a secondary delimiter for possible use in controlled vocabulary lists in addition to the primary delimiting string in CEX sources.
 
 **2.1.2**:  Adds tests for generating corpus from markdown source.
 

@@ -48,20 +48,7 @@ collectionRepository: Option[CiteCollectionRepository] = None
 */
 object CiteLibrary {
 
-
-  /** Create a [[CiteLibrary]].
-  *
-  * @param cexString Data in CITE Exchange format.
-  * @param delimiter String value delimiting columns of CEX data.
-  */
-  def apply(cexString: String, delimiter: String)  : CiteLibrary = {
-    val cex = CexParser(cexString)
-
-
-    val libContent = cex.block("citelibrary").flatMap(_.split("\n")) //.getOrElse("").split("\n").toVector
-    val libPairs = libContent.map(_.split(delimiter)).filter(_.size == 2).map(ar => ar(0) -> ar(1))
-    val libMap = libPairs.toMap
-
+  def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
     val catalog = Catalog(cex.block("ctscatalog").mkString("\n"),delimiter)
     val corpus = Corpus(cex.block("ctsdata").mkString("\n"), delimiter)
 
@@ -72,8 +59,30 @@ object CiteLibrary {
         None
       }
     }
+    textRepo
+  }
 
-    val collectionRepo = None
+  def libMapFromCex(cex: CexParser, delimiter: String): Map[String, String] = {
+    val libContent = cex.block("citelibrary").flatMap(_.split("\n"))
+    val libPairs = libContent.map(_.split(delimiter)).filter(_.size == 2).map(ar => ar(0) -> ar(1))
+    libPairs.toMap
+  }
+
+  def collectionRepoFromCex(cex: CexParser, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
+    None
+  }
+
+  /** Create a [[CiteLibrary]].
+  *
+  * @param cexString Data in CITE Exchange format.
+  * @param delimiter String value delimiting columns of CEX data.
+  */
+  def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
+    val cex = CexParser(cexString)
+    val libMap = libMapFromCex(cex, delimiter)
+    val textRepo = textRepoFromCex(cex, delimiter)
+    val collectionRepo = collectionRepoFromCex(cex,delimiter,delimiter2)
+
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo)
   }
 

@@ -12,7 +12,7 @@ name#demo
 urn#urn:cite2:cex:democex.2017_1:test
 license#public domain
 """
-    val citeLib = CiteLibrary(cex,"#")
+    val citeLib = CiteLibrary(cex,"#",",")
     assert(citeLib.name == "demo")
     //assert(citeLib.urn == Cite2Urn("urn:cite2:cex:democex.2017_1:test"))
     assert(citeLib.license == "public domain")
@@ -33,7 +33,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 """
 
 
-    val citeRepo = CiteLibrary(cex,"#")
+    val citeRepo = CiteLibrary(cex,"#",",")
     assert(citeRepo.hasTexts)
   }
 
