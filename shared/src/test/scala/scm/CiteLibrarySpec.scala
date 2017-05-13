@@ -67,6 +67,8 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
     val citeRepo = CiteLibrary(cex,"#",",")
     val catalogedCollections = 1
     assert(citeRepo.collectionRepository.get.catalog.size == catalogedCollections)
+    // 3 records, 6 properties
+    assert(citeRepo.collectionRepository.get.data.size == 3*6)
   }
 
 
