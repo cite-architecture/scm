@@ -68,8 +68,17 @@ object CiteLibrary {
     libPairs.toMap
   }
 
-  def collectionRepoFromCex(cex: CexParser, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
-    None
+  def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
+    val cex = CexParser(cexString)
+    val catalogCex = cex.block("citecatalog").mkString("\n")
+
+    if (catalogCex.size < 1) {
+      None
+    } else {
+      Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
+    }
+
+
   }
 
   /** Create a [[CiteLibrary]].
@@ -81,7 +90,7 @@ object CiteLibrary {
     val cex = CexParser(cexString)
     val libMap = libMapFromCex(cex, delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
-    val collectionRepo = collectionRepoFromCex(cex,delimiter,delimiter2)
+    val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
 
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo)
   }
