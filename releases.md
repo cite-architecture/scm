@@ -1,5 +1,10 @@
 # Releases
 
+
+**3.0.2**:  Updates dependency to `citeobj` library, and adds tests on use of `citeobj` in correctly exported ScalaJS environment.
+
+**3.0.1**:  Corrects an error in exposing classes to javascript environment.
+
 **3.0.0**: Supports version 3.0 of CEX specification, including creation of `CiteCollectionRepository`s.  Constructing a `CiteLibary` now requires specification of a secondary delimiter for possible use in controlled vocabulary lists in addition to the primary delimiting string in CEX sources.
 
 **2.1.2**:  Adds tests for generating corpus from markdown source.
