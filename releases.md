@@ -1,5 +1,6 @@
 # Releases
 
+**3.1.0**: Updates to `citeobj` library add new functionality.
 
 **3.0.2**:  Updates dependency to `citeobj` library, and adds tests on use of `citeobj` in correctly exported ScalaJS environment.
 

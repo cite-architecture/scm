@@ -6,7 +6,7 @@
 `scm` is a cross-platform library for managing an archive of CITE resources, including preparing content for serving with [Scala Cite Services (scs)](https://github.com/cite-architecture/scs).
 
 
-## Current version: 2.1.2
+## Current version: 3.1.0
 
 
 Status:  **active development**. [Release notes](releases.md)
