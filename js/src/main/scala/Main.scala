@@ -41,6 +41,14 @@ siglum#sequence#urn#rv#label#codex
 msA#1#urn:cite2:hmt:msA.v1:1r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 1r#urn:cite2:hmt:codex:msA
 msA#2#urn:cite2:hmt:msA.v1:1v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 1v#urn:cite2:hmt:codex:msA
 msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 2r#urn:cite2:hmt:codex:msA
+
+
+#!imagedata
+
+urn:cite2:hmt:vaimg.v1:#CITE image URL#http://www.homermultitext.org/hmtdigital/images?#urn:cite2:hmt:msA.v1.rights:
+urn:cite2:hmt:vaimg.v1:#CITE image string#http://www.homermultitext.org/hmtdigital/images?#urn:cite2:hmt:msA.v1.rights:
+urn:cite2:hmt:vaimg.v1:#local jpeg#file://./images#urn:cite2:hmt:msA.v1.rights:
+urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
 """
 
       val citelib = CiteLibrary(cexSrc,"#",",")
@@ -51,6 +59,15 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
           assert(cr.get.catalog.size == 1)
           assert(cr.get.data.size == 18)
           println(s"Its collection repository has ${cr.get.catalog.size} cataloged collection(s) and ${cr.get.data.size} property values." )
+        }
+      }
+
+      citelib.imageExtensions match {
+        case None => println("Failed to load image extensions")
+        case imgOption: Option[ImageExtensions] => {
+          val imgs = imgOption.get
+          assert(imgs.protocolMap.size == 1)
+          println(s"Mapped ${imgs.protocolMap.size} colleciton to binary image source")
         }
       }
 

@@ -18,8 +18,13 @@ import js.annotation.JSExport
 * @param textRepository Optional, cataloged corpus of citable texts.
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
 */
-@JSExport  case class  CiteLibrary (name: String, urn: Cite2Urn, license: String, textRepository: Option[TextRepository] = None,
-collectionRepository: Option[CiteCollectionRepository] = None
+@JSExport  case class  CiteLibrary (
+  name: String,
+  urn: Cite2Urn,
+  license: String,
+  textRepository: Option[TextRepository] = None,
+  collectionRepository: Option[CiteCollectionRepository] = None,
+  imageExtensions: Option[ImageExtensions] = None
  ) {
 
   /** True if TextRepository is instantiated.
@@ -91,8 +96,9 @@ object CiteLibrary {
     val libMap = libMapFromCex(cex, delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
+    val imgExtensions = ImageExtensions(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions)
   }
 
 }
