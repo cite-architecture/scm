@@ -1,5 +1,8 @@
 # Releases
 
+
+**3.2.1**: Updated dependency on `citeobj` library fixes bugs in processing CEX data for image extensions and for CITE Collection catalogs.
+
 **3.2.0**:  Add image extensions to `CiteLibrary` class.
 
 **3.1.0**: Updates to `citeobj` library add new functionality.

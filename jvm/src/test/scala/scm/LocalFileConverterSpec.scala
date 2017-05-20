@@ -46,5 +46,4 @@ class LocalFileConverterSpec extends FlatSpec {
     assert(seglabels.toSet == Set("#!ctscatalog", "#!ctsdata"))
   }
 
-
 }

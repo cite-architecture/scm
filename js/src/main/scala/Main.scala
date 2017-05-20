@@ -67,7 +67,7 @@ urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
         case imgOption: Option[ImageExtensions] => {
           val imgs = imgOption.get
           assert(imgs.protocolMap.size == 1)
-          println(s"Mapped ${imgs.protocolMap.size} colleciton to binary image source")
+          println(s"Mapped ${imgs.protocolMap.size} collection to binary image sources")
         }
       }
 
