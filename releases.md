@@ -1,5 +1,7 @@
 # Releases
 
+**3.4.0**: Updated dependency on `citeobj` library adds access to CITE property definitions as part of `CiteObject`.
+
 **3.3.0**: Updated dependency on `citeobj` library adds functionality to `ImageExtensions` to select by protocol, or for individual collections.
 
 **3.2.1**: Updated dependency on `citeobj` library fixes bugs in processing CEX data for image extensions and for CITE Collection catalogs.
