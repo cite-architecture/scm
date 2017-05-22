@@ -1,5 +1,7 @@
 # Releases
 
+**3.5.0**: Updated dependency on `citeobj` library adds repository-level `~~` function.
+
 **3.4.0**: Updated dependency on `citeobj` library adds access to CITE property definitions as part of `CiteObject`.
 
 **3.3.0**: Updated dependency on `citeobj` library adds functionality to `ImageExtensions` to select by protocol, or for individual collections.
