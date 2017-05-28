@@ -95,19 +95,21 @@ object CiteLibrary {
 
   }
 
+  /** Create optional text repository from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimeter used in CEX source.
+  */
   def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
 
-    val catalog = Catalog(cex.blockString("ctscatalog").mkString("\n"),delimiter)
-    val corpus = Corpus(cex.blockString("ctsdata").mkString("\n"), delimiter)
+    val catalog = Catalog(cex.blockString("ctscatalog"),delimiter)
+    val corpus = Corpus(cex.blockString("ctsdata"), delimiter)
 
-    val textRepo = {
-      if ((catalog.size > 0) && (corpus.size > 0)) {
-        Some(TextRepository(corpus,catalog))
-      } else {
-        None
-      }
+    if ((catalog.size > 0) && (corpus.size > 0)) {
+      Some(TextRepository(corpus,catalog))
+    } else {
+      None
     }
-    textRepo
   }
 
 

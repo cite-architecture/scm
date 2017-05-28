@@ -98,14 +98,14 @@ urn#urn:cite2:cex:democex:test
   }
 
   it should "accept a conifgured library with no data contents" in {
-    val noVersion = """
+    val noData = """
 #!citelibrary
 license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 """
 
-    val lib = CiteLibrary(noVersion,"#",",")
+    val lib = CiteLibrary(noData,"#",",")
     lib match {
       case citeLib : CiteLibrary => {
         assert(citeLib.textRepository == None)
