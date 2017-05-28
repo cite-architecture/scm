@@ -4,6 +4,7 @@ import edu.holycross.shot.cite._
 import edu.holycross.shot.ohco2._
 import edu.holycross.shot.citeobj._
 import edu.holycross.shot.cex._
+import edu.holycross.shot.citerelation._
 
 import scala.scalajs.js
 import js.annotation.JSExport
@@ -24,7 +25,8 @@ import js.annotation.JSExport
   license: String,
   textRepository: Option[TextRepository] = None,
   collectionRepository: Option[CiteCollectionRepository] = None,
-  imageExtensions: Option[ImageExtensions] = None
+  imageExtensions: Option[ImageExtensions] = None,
+  relationSet: Option[CiteRelationSet] = None
  ) {
 
   /** True if TextRepository is instantiated.
@@ -53,9 +55,52 @@ import js.annotation.JSExport
 */
 object CiteLibrary {
 
+  /** Create map of required library configuration values from CEX source.
+  * CEX `citelibrary` block must include name and license configuration, and
+  * a valid versioned URN identifying the library.
+  *
+  * @param cex Parsed CEX source
+  * @param delimiter Column-delimeter used in CEX source.
+  */
+  def libConfigMapFromCex(cex: CexParser, delimiter: String): Map[String, String] = {
+    val libContent = cex.blockString("citelibrary").split("\n").toVector
+    if (libContent.size < 2) {
+      throw CiteLibraryException("CEX source must include `citelibrary` block")
+    } else {
+      val libPairs = libContent.map(_.split(delimiter)).filter(_.size == 2).map(ar => ar(0) -> ar(1))
+      val configMap = libPairs.toMap
+
+      require(configMap.keySet.contains("name"), "CEX `citelibrary` block must include value for library name")
+      require(configMap.keySet.contains("license"), "CEX `citelibrary` block must include a licensing statement")
+      require(configMap.keySet.contains("urn"), "CEX `citelibrary` block must include a URN")
+
+      val u = Cite2Urn(configMap("urn"))
+      u.versionOption match {
+        case None => throw CiteLibraryException("URN must include version identifier")
+        case _ => configMap
+      }
+
+    }
+
+  }
+
+    def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
+      val cex = CexParser(cexString)
+      val catalogCex = cex.blockString("citecatalog")
+
+      if (catalogCex.size < 1) {
+        None
+      } else {
+        Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
+      }
+
+
+    }
+
   def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
-    val catalog = Catalog(cex.block("ctscatalog").mkString("\n"),delimiter)
-    val corpus = Corpus(cex.block("ctsdata").mkString("\n"), delimiter)
+
+    val catalog = Catalog(cex.blockString("ctscatalog").mkString("\n"),delimiter)
+    val corpus = Corpus(cex.blockString("ctsdata").mkString("\n"), delimiter)
 
     val textRepo = {
       if ((catalog.size > 0) && (corpus.size > 0)) {
@@ -67,24 +112,6 @@ object CiteLibrary {
     textRepo
   }
 
-  def libMapFromCex(cex: CexParser, delimiter: String): Map[String, String] = {
-    val libContent = cex.block("citelibrary").flatMap(_.split("\n"))
-    val libPairs = libContent.map(_.split(delimiter)).filter(_.size == 2).map(ar => ar(0) -> ar(1))
-    libPairs.toMap
-  }
-
-  def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
-    val cex = CexParser(cexString)
-    val catalogCex = cex.block("citecatalog").mkString("\n")
-
-    if (catalogCex.size < 1) {
-      None
-    } else {
-      Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
-    }
-
-
-  }
 
   /** Create a [[CiteLibrary]].
   *
@@ -93,10 +120,11 @@ object CiteLibrary {
   */
   def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
     val cex = CexParser(cexString)
-    val libMap = libMapFromCex(cex, delimiter)
-    val textRepo = textRepoFromCex(cex, delimiter)
-    val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
-    val imgExtensions = ImageExtensions(cexString,delimiter)
+    val libMap = libConfigMapFromCex(cex, delimiter)
+    val textRepo = None // textRepoFromCex(cex, delimiter)
+    val collectionRepo = None //collectionRepoFromCex(cexString,delimiter,delimiter2)
+    val imgExtensions = None //ImageExtensions(cexString,delimiter)
+    val relationSet = None
 
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions)
   }
