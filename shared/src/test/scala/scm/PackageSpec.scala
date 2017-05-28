@@ -13,9 +13,5 @@ license#public domain
     assert(cexMap("name") == "demo")
     assert(cexMap("version" ) == "2017.1")
     assert(cexMap("license" ) == "public domain")
-  }
-
-  it should "handle malformed data gracefully" in pending
-  // but how?
-  
+  }  
 }
