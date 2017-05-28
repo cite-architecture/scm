@@ -79,23 +79,21 @@ object CiteLibrary {
         case None => throw CiteLibraryException("URN must include version identifier")
         case _ => configMap
       }
-
     }
-
   }
 
-    def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
-      val cex = CexParser(cexString)
-      val catalogCex = cex.blockString("citecatalog")
+  def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
+    val cex = CexParser(cexString)
+    val catalogCex = cex.blockString("citecatalog")
 
-      if (catalogCex.size < 1) {
-        None
-      } else {
-        Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
-      }
-
-
+    if (catalogCex.size < 1) {
+      None
+    } else {
+      Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
     }
+
+
+  }
 
   def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
 
@@ -117,11 +115,12 @@ object CiteLibrary {
   *
   * @param cexString Data in CITE Exchange format.
   * @param delimiter String value delimiting columns of CEX data.
+  * @param delimiter2 Secondary delimiter separating values with a  column of CEX data.
   */
   def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
-    val textRepo = None // textRepoFromCex(cex, delimiter)
+    val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = None //collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = None //ImageExtensions(cexString,delimiter)
     val relationSet = None

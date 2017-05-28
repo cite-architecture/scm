@@ -97,22 +97,25 @@ urn#urn:cite2:cex:democex:test
     }
   }
 
-/*
-
-  it should "require a versioned URN identifying the library" in {
-    val badUrn = """
+  it should "accept a conifgured library with no data contents" in {
+    val noVersion = """
 #!citelibrary
-urn#urn:cite2:cex:democex.2017_1:
-name#Demo library
 license#public domain
+name#Demo library
+urn#urn:cite2:cex:democex.2017a:test
 """
-    try {
-      val lib = CiteLibrary(badUrn,"#",",")
-    } catch {
-      case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: URN must be versioned")
-      case t: Throwable => fail("Should have thrown CiteLibraryException, but threw " + t)
-    }
-  }*/
 
+    val lib = CiteLibrary(noVersion,"#",",")
+    lib match {
+      case citeLib : CiteLibrary => {
+        assert(citeLib.textRepository == None)
+        assert(citeLib.collectionRepository == None)
+        assert(citeLib.imageExtensions == None)
+        assert(citeLib.relationSet == None)
+
+      }
+      case _ => fail("Should have created a CiteLibrary")
+    }
+  }
 
 }
