@@ -23,7 +23,7 @@ license#public domain
 
     val cex = """#!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 #!ctscatalog
 urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online
@@ -37,14 +37,12 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
     assert(citeRepo.hasTexts)
   }
 
-  it should "handle missing metadata gracefully" in pending
-  it should "ignore 'comment' lines in metadata" in pending
-  // but how?
+
 
   it should "support building a CITE Collection repository from a CEX string" in {
     val cex = """#!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!citecatalog
@@ -75,7 +73,7 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
   it should "happily build collections with multiple objects" in {
     val tinyCex = """#!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!ctscatalog
@@ -89,7 +87,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 
 #!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!citecatalog
@@ -121,7 +119,7 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
     val cexSrc = """
 #!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!ctscatalog
@@ -135,7 +133,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 
 #!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!citecatalog
@@ -167,5 +165,7 @@ urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
   assert(imgExtensions.protocolMap.size == 1)
 }
 
+it should "handle missing metadata gracefully" in pending
+it should "ignore 'comment' lines in metadata" in pending
 
 }
