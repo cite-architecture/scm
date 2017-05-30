@@ -141,6 +141,21 @@ object CiteLibrary {
     }
   }
 
+  /** Create optional CITE Collecctions repository from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
+  * @param delimiter2  Item-delimiter used within a column in CEX source.
+  */
+  def relationsFromCex(cex: String, delimiter: String = "#"): Option[CiteRelationSet] = {
+    val relations = CiteRelationSet(cex,delimiter)
+    if (relations.size < 1) {
+      None
+    } else {
+      Some(relations)
+    }
+  }
+
 
   /** Create a [[CiteLibrary]].
   *
@@ -154,9 +169,9 @@ object CiteLibrary {
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = ImageExtensions(cexString,delimiter)
-    val relationSet = None
+    val relationSet = relationsFromCex(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions,relationSet)
   }
 
 }

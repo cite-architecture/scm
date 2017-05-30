@@ -40,7 +40,7 @@ license#public domain
   }
 
 
-  
+
   it should "return None if there image extensions do not match collections data" in pending /* {
 
     val noMatch = """
@@ -60,7 +60,7 @@ urn:cite2:hmt:vaimg.2017a:#local jpeg string#./#urn:cite2:hmt:vaimg.2017a.rights
       case _ => fail("Whoops, found this for c")
     }
 
-  } */
+  }*/
 
   it should "return some collection if image extensions and collections are consistent" in {
     val legit = """
@@ -87,7 +87,6 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017#Natural light photograph of Venetus 
 
 """
     val ie = ImageExtensions(legit,"#")
-    println("IE: " + ie)
     val citeLib = CiteLibrary(legit,"#",",")
     citeLib.imageExtensions match {
       case None => fail("Whoops, no image collection")

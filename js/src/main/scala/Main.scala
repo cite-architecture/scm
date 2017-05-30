@@ -9,7 +9,7 @@ object Main extends js.JSApp {
 
         val cexSrc = """#!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!ctscatalog
@@ -23,7 +23,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 
 #!citelibrary
 name#demo
-urn#urn:cite2:cex:testcoll:hdt1node
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
 #!citecatalog
