@@ -18,6 +18,8 @@ import js.annotation.JSExport
 * @param license Licensing and rights information.
 * @param textRepository Optional, cataloged corpus of citable texts.
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
+* @param imageExtensions Optional list of binary image implementations.
+* @param relationSet Optional set of triple statements.
 */
 @JSExport  case class  CiteLibrary (
   name: String,
@@ -38,14 +40,34 @@ import js.annotation.JSExport
     }
   }
 
-/*
-  def find(s: String): Corpus = {
-    textRepository match {
-      case None => Corpus(Vector.empty)
-      case _ => Corpus(textRepository.find(s))
+  /** True if CiteCollectionRepository is instantiated.
+  */
+  def hasCollections: Boolean = {
+    collectionRepository match {
+      case None => false
+      case t: Some[CiteCollectionRepository] => true
     }
   }
+
+
+  /** True if ImageExtensions is instantiated.
   */
+  def hasImageExtensions: Boolean = {
+    imageExtensions match {
+      case None => false
+      case t: Some[ImageExtensions] => true
+    }
+  }
+
+
+  /** True if CiteRelationSet is instantiated.
+  */
+  def hasIndexes : Boolean = {
+    relationSet match {
+      case None => false
+      case t: Some[CiteRelationSet] => true
+    }
+  }
 
 }
 
@@ -60,7 +82,7 @@ object CiteLibrary {
   * a valid versioned URN identifying the library.
   *
   * @param cex Parsed CEX source
-  * @param delimiter Column-delimeter used in CEX source.
+  * @param delimiter Column-delimiter used in CEX source.
   */
   def libConfigMapFromCex(cex: CexParser, delimiter: String): Map[String, String] = {
     val libContent = cex.blockString("citelibrary").split("\n").toVector
@@ -82,23 +104,12 @@ object CiteLibrary {
     }
   }
 
-  def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
-    val cex = CexParser(cexString)
-    val catalogCex = cex.blockString("citecatalog")
 
-    if (catalogCex.size < 1) {
-      None
-    } else {
-      Some(CiteCollectionRepository(cexString,delimiter,delimiter2))
-    }
-
-
-  }
 
   /** Create optional text repository from CEX source.
   *
   * @param cex Parsed CEX source.
-  * @param delimiter  Column-delimeter used in CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
   */
   def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
 
@@ -109,6 +120,24 @@ object CiteLibrary {
       Some(TextRepository(corpus,catalog))
     } else {
       None
+    }
+  }
+
+  /** Create optional CITE Collecctions repository from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
+  * @param delimiter2  Item-delimiter used within a column in CEX source.
+  */
+  def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
+    val cex = CexParser(cexString)
+    val catalogCex = cex.blockVector("citecatalog")
+
+    if (catalogCex.size < 1) {
+      None
+    } else {
+      val ccr = CiteCollectionRepository(cexString,delimiter,delimiter2)
+      Some(ccr)
     }
   }
 
@@ -123,8 +152,8 @@ object CiteLibrary {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
-    val collectionRepo = None //collectionRepoFromCex(cexString,delimiter,delimiter2)
-    val imgExtensions = None //ImageExtensions(cexString,delimiter)
+    val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
+    val imgExtensions = ImageExtensions(cexString,delimiter)
     val relationSet = None
 
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions)

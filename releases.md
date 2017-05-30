@@ -1,6 +1,7 @@
 # Releases
 
-**3.6.0**: Add support for CITE relations (indexes).
+**3.6.0**: Add support for CITE relations (indexes).  Updated dependency on `citeobj` library adds repository-level
+querying on CITE Collections data.
 
 **3.5.0**: Updated dependency on `citeobj` library adds repository-level `~~` function.
 
