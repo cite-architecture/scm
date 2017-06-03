@@ -8,7 +8,7 @@ license	CC Share Alike.
 
 #!ctscatalog
 urn	citationScheme	groupName	workTitle	versionLabel	exemplarLabel	online
-urn:cts:citedemo:arabic.quran.v1:	surah/ayah	Classical Arabic examples	The Quran	Arabic. Text from http://tanzil.net. Creative Commons Attribution 3.0 License		true
+urn:cts:citedemo:arabic.quran.v1:	surah/ayah	Classical Arabic examples	The Quran	Arabic. Text from http://tanzil.net. Creative Commons Attribution 3.0 License		true	ara
 
 #!ctsdata
 urn:cts:citedemo:arabic.quran.v1:1.1	بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
