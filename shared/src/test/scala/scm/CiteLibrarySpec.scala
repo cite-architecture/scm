@@ -3,6 +3,8 @@ import org.scalatest.FlatSpec
 
 import edu.holycross.shot.cite._
 
+import java.net.URI
+
 class CiteLibrarySpec extends FlatSpec {
 
   "A CiteLibrary" should "support building a metadata set with no repositories" in {
@@ -131,10 +133,6 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:#book/section#Herodotus#Histories#Englis
 
 urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inquiry of Herodotus of Halicarnassos, to the end that neither the deeds of men may be forgotten by lapse of time, nor the works great and marvellous, which have been produced some by Hellenes and some by Barbarians, may lose their renown; and especially that the causes may be remembered for which these waged war with one another.
 
-#!citelibrary
-name#demo
-urn#urn:cite2:cex:testcoll.2017a:hdt1node
-license#public domain
 
 #!citecatalog
 collection#urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
@@ -163,6 +161,22 @@ urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
   val citeLib = CiteLibrary(cexSrc,"#",",")
   val imgExtensions = citeLib.imageExtensions.get
   assert(imgExtensions.protocolMap.size == 1)
+}
+
+it should "build a vector of CiteNamespaces from CEX source" in {
+  val cexSrc = """
+#!citelibrary
+name#demo
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
+license#public domain
+
+namespace#hmt#http://www.homermultitext.org/citens/hmt
+"""
+    val citeLib = CiteLibrary(cexSrc,"#",",")
+    assert (citeLib.namespaces.size == 1)
+    val ns = citeLib.namespaces(0)
+    assert(ns.abbreviation == "hmt")
+    assert(ns.uri == new URI("http://www.homermultitext.org/citens/hmt"))
 }
 
 it should "handle missing metadata gracefully" in pending

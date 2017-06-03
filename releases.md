@@ -1,5 +1,8 @@
 # Releases
 
+
+**4.0.0**: Add support for CITE namespace information in CEX 2.0 sources.
+
 **3.7.0**:  Update to `ocho2` library now supports version 2.0 of CEX format.
 
 **3.6.0**: Add support for CITE relations (indexes).  Updated dependency on `citeobj` library adds repository-level

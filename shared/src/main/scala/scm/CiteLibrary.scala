@@ -6,6 +6,8 @@ import edu.holycross.shot.citeobj._
 import edu.holycross.shot.cex._
 import edu.holycross.shot.citerelation._
 
+import java.net.URI
+
 import scala.scalajs.js
 import js.annotation.JSExport
 
@@ -16,6 +18,7 @@ import js.annotation.JSExport
 * @param name Name of the citable library.
 * @param urn URN identifying the library.
 * @param license Licensing and rights information.
+* @param namespaces Possibly empty vector of [[CiteNamespace]]s.
 * @param textRepository Optional, cataloged corpus of citable texts.
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
 * @param imageExtensions Optional list of binary image implementations.
@@ -25,6 +28,7 @@ import js.annotation.JSExport
   name: String,
   urn: Cite2Urn,
   license: String,
+  namespaces: Vector[CiteNamespace],
   textRepository: Option[TextRepository] = None,
   collectionRepository: Option[CiteCollectionRepository] = None,
   imageExtensions: Option[ImageExtensions] = None,
@@ -157,6 +161,21 @@ object CiteLibrary {
   }
 
 
+  /** Create vector of [[CiteNamespace]]s from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
+  */
+  def namespaceFromCex(cex: CexParser, delimiter: String = "#"): Vector[CiteNamespace] = {
+    val libContent = cex.blockString("citelibrary").split("\n").toVector
+
+    val tripleValues = libContent.map(_.split(delimiter)).filter(_.size == 3)
+    val nsList = for (arr <- tripleValues) yield {
+      CiteNamespace(arr(1), new URI(arr(2)))
+    }
+    nsList.toVector
+  }
+
   /** Create a [[CiteLibrary]].
   *
   * @param cexString Data in CITE Exchange format.
@@ -166,12 +185,13 @@ object CiteLibrary {
   def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
+    val nsVector = namespaceFromCex(cex,delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = ImageExtensions(cexString,delimiter)
     val relationSet = relationsFromCex(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"), textRepo,collectionRepo,imgExtensions,relationSet)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet)
   }
 
 }
