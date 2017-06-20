@@ -1,5 +1,6 @@
 # Releases
 
+**4.0.1**: Update `citeobj` library with fixes to bugs in searching citable objects and repositories.
 
 **4.0.0**: Add support for CITE namespace information in CEX 2.0 sources.
 
