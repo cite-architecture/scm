@@ -1,5 +1,12 @@
 # Releases
 
+
+**4.2.0**: Update to `citeobj` library adds new implementations of `BinaryImageSource`.
+
+**4.1.1**: Update `cex` library with bug fix.
+
+**4.1.0**: Update `cex` library to support version 3.0 of CEX specification.
+
 **4.0.1**: Update `citeobj` library with fixes to bugs in searching citable objects and repositories.
 
 **4.0.0**: Add support for CITE namespace information in CEX 2.0 sources.

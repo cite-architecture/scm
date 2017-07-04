@@ -1,5 +1,5 @@
-# This is a brief test file with 19 ayahs from the Quran.
-# It uses the tab character as its column delimiter.
+// This is a brief test file with 19 ayahs from the Quran.
+// It uses the tab character as its column delimiter.
 
 #!citelibrary
 name	demo
