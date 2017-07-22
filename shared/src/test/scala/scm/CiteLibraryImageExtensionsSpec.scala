@@ -70,16 +70,16 @@ urn#urn:cite2:dse:demo.2017a:va12r
 license#public domain
 
 #!imagedata
-urn:cite2:hmt:vaimg.2017a:#local jpeg string#./#urn:cite2:hmt:vaimg.2017a.rights:
+urn:cite2:hmt:vaimg.2017a:#localJpegString#./#urn:cite2:hmt:vaimg.2017a.rights:
 
 
-#!citecatalog
+#!citecollections
+urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
 
-collection#urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
-
-property#urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
-property#urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
+#!citeproperties
+urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
+urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 
 #!citedata
 urn#caption#rights

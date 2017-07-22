@@ -7,7 +7,7 @@ import edu.holycross.shot.ohco2._
 
 class CiteLibraryTextRepoSpec extends FlatSpec {
 
-  "The CiteLibrary object" should "return None if no text repository is configured" in {
+  "The CiteLibrary object" should "return None for TextRepository if no text repository is configured" in {
 
     val noData = """
 #!citelibrary
@@ -16,7 +16,10 @@ name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 """
     val lib = CiteLibrary(noData,"#",",")
-    assert(lib.textRepository == None)
+    lib.textRepository match {
+      case None => assert(true)
+      case _ => fail ("Should have returned None")
+    }
   }
 
   it should "return None if there is no catalog content" in {
@@ -52,6 +55,9 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:#book/section#Herodotus#Histories#Englis
     val lib = CiteLibrary(noData,"#",",")
     assert(lib.textRepository == None)
   }
+
+
+
 
   it should "throw an exception if data and catalog conflict" in {
     val conflicted = """

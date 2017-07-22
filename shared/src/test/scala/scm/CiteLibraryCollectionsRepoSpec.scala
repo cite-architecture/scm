@@ -22,25 +22,30 @@ urn#urn:cite2:cex:democex.2017a:test
 
 
 
-  it should "allow a catalog even if there is no content in collections data" in {
+  it should "allow a catalog even if there is no content in collections data" in pending /*{
     val noData = """#!citelibrary
 license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
-#!citecatalog
-# Text-bearing surfaces:
-collection#urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
-property#urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:msA.v1.label:#Label#String#
-property#urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
-property#urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
-property#urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
-property#urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
-# Documentary images:
-collection#urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
-property#urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
-property#urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
+#!citecollections
+// Text-bearing surfaces:
+urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+// Documenary images:
+urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A
+
+#!citeproperties
+// pages
+urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.label:#Label#String#
+urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
+urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
+urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
+ manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
+// images
+urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
+urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 """
     val lib = CiteLibrary(noData, "#",",")
     lib.collectionRepository match {
@@ -49,14 +54,14 @@ property#urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
         assert ( collRepo.catalog.size == 2)
         assert(collRepo.data.size == 0)
       }
-      case _ => fail("Did not instantiate CiteCollectionRepository")
+      case _ => fail("Did not instantiate CiteCollectionRepository: ${lib.colectionRepository}")
     }
 
 
 
   }
 
-
+*/
   it should "throw an exception if citedata blocks are included without catalog" in {
     val noCatalog = """#!citelibrary
 license#public domain
@@ -73,13 +78,13 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017#Natural light photograph of Venetus 
       val lib = CiteLibrary(noCatalog, "#",",")
       fail("Should not have made CiteLibrary")
     } catch {
-      case iae: IllegalArgumentException => assert(iae.getMessage() ==  "requirement failed: CITE Collection data must be documented in a citectalog block")
+      case iae: IllegalArgumentException => assert(iae.getMessage() ==  "requirement failed: CITE Collection data must be documented in a citecollections block")
       case t: Throwable => fail("Should have thrown an IllegalArgument Exception: " + t)
     }
 
   }
 
-
+/*
 
     val orcacex = """
 #!citelibrary
@@ -87,16 +92,15 @@ license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 
-#!citecatalog
+#!citecollections
 
+urn:cite2:hmt:clausereading.v1:#Clauses in text of the Iliad#urn:cite2:hmt:clausereading.v1.deformation:##CC-attribution-share-alike
+#!citeproperties
 
-collection#urn:cite2:hmt:clausereading.v1:#Clauses in text of the Iliad#urn:cite2:hmt:clausereading.v1.deformation:##CC-attribution-share-alike
-
-
-property#urn:cite2:hmt:clausereading.v1.urn:#ORCA URN#Cite2Urn#
-property#urn:cite2:hmt:clausereading.v1.passage:#Passage analyzed#CtsUrn#
-property#urn:cite2:hmt:clausereading.v1.analysis:#Analysis#Cite2Urn#
-property#urn:cite2:hmt:clausereading.v1.deformation:#Text deformation#String#
+urn:cite2:hmt:clausereading.v1.urn:#ORCA URN#Cite2Urn#
+urn:cite2:hmt:clausereading.v1.passage:#Passage analyzed#CtsUrn#
+urn:cite2:hmt:clausereading.v1.analysis:#Analysis#Cite2Urn#
+urn:cite2:hmt:clausereading.v1.deformation:#Text deformation#String#
 
 #!citedata
 
@@ -114,9 +118,9 @@ urn:cite2:hmt:clausereading.v1:clause9#urn:cts:greekLit:tlg0012.tlg001.fuPers:1.
 urn:cite2:hmt:clausereading.v1:clause10#urn:cts:greekLit:tlg0012.tlg001.fuPers:1.10@ὀ[1]-1.10@ί[1]#urn:cite2:hmt:iliadicClauses.v1:indicative#ὀλέκοντο δὲ λαοί
 urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2.1@οὐδέ[1]-2.1@ἐΐσης[1]#urn:cite2:hmt:iliadicClauses.v1:indicative#οὐδέ τι θυμὸς ἐδεύετο δαιτὸς ἐΐσης
 """
+*/
 
-/*
-    it should "match URNs in properties" in {
+    it should "match URNs in properties" in  pending /*{
       val orcaRepo = CiteCollectionRepository(orcacex,"#",",")
       val orcaObjects = orcaRepo.citableObjects
       val orca1 = orcaObjects(0)
@@ -124,7 +128,8 @@ urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2
       println("matches Iliad? " + orca1.urnMatch(iliad))
     }
     */
-  it should "search a collection repository for matching URN values" in {
+  it should "search a collection repository for matching URN values" in pending
+  /*{
     val iliad = CtsUrn("urn:cts:greekLit:tlg0012.tlg001:")
 
     val lib = CiteLibrary(orcacex, "#",",")
@@ -141,7 +146,7 @@ urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2
 
   }
 
-
+*/
 
   // THESE TWO REQUIREMENTS SHOULD BE ENFORCED IN CiteCollectionRepository.  TEST WHEN UPGRADED LIB version
   // DOES THIS PROPERLy.
@@ -171,8 +176,8 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.WRONGVERSION#Natural light photograph of 
       case t: Throwable => fail("Should have thrown an IllegalArgument Exception: " + t)
     }
   }
-
-  it should "return some collection if catalog and data are consistent" in {
+*/
+  it should "return some collection if catalog and data are consistent" in pending /* {
 
     val legit = """#!citelibrary
 license#public domain

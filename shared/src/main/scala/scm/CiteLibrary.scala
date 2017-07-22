@@ -119,7 +119,6 @@ object CiteLibrary {
 
     val catalog = Catalog(cex.blockString("ctscatalog"),delimiter)
     val corpus = Corpus(cex.blockString("ctsdata"), delimiter)
-
     if ((catalog.size > 0) && (corpus.size > 0)) {
       Some(TextRepository(corpus,catalog))
     } else {
@@ -135,13 +134,13 @@ object CiteLibrary {
   */
   def collectionRepoFromCex(cexString: String, delimiter: String = "#", delimiter2 : String = ","): Option[CiteCollectionRepository] = {
     val cex = CexParser(cexString)
-    val catalogCex = cex.blockVector("citecatalog")
-
-    if (catalogCex.size < 1) {
-      None
-    } else {
+    val collectionsBlocks =  cex.blockVector("citecollections")
+    val propertiesBlocks = cex.blockVector("citeproperties")
+    if ((collectionsBlocks.size > 1) && (propertiesBlocks.size > 1)) {
       val ccr = CiteCollectionRepository(cexString,delimiter,delimiter2)
       Some(ccr)
+    } else {
+      None
     }
   }
 
@@ -166,7 +165,7 @@ object CiteLibrary {
   * @param cex Parsed CEX source.
   * @param delimiter  Column-delimiter used in CEX source.
   */
-  def namespaceFromCex(cex: CexParser, delimiter: String = "#"): Vector[CiteNamespace] = {
+  def namespacesFromCex(cex: CexParser, delimiter: String = "#"): Vector[CiteNamespace] = {
     val libContent = cex.blockString("citelibrary").split("\n").toVector
 
     val tripleValues = libContent.map(_.split(delimiter)).filter(_.size == 3)
@@ -185,7 +184,8 @@ object CiteLibrary {
   def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
-    val nsVector = namespaceFromCex(cex,delimiter)
+    val nsVector = namespacesFromCex(cex,delimiter)
+
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = ImageExtensions(cexString,delimiter)

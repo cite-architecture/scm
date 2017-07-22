@@ -3,7 +3,7 @@ import org.scalatest.FlatSpec
 
 import edu.holycross.shot.cite._
 
-import java.net.URI
+import java.net.URI // is this ok in JS?
 
 class CiteLibrarySpec extends FlatSpec {
 
@@ -20,7 +20,7 @@ license#public domain
     assert(citeLib.license == "public domain")
   }
 
-
+ /*
   it should "support building a text repository from a CEX source string" in {
 
     val cex = """#!citelibrary
@@ -178,7 +178,7 @@ namespace#hmt#http://www.homermultitext.org/citens/hmt
     assert(ns.abbreviation == "hmt")
     assert(ns.uri == new URI("http://www.homermultitext.org/citens/hmt"))
 }
-
+*/
 it should "handle missing metadata gracefully" in pending
 it should "ignore 'comment' lines in metadata" in pending
 
