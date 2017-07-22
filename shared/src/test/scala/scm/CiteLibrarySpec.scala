@@ -7,7 +7,7 @@ import java.net.URI // is this ok in JS?
 
 class CiteLibrarySpec extends FlatSpec {
 
-  "A CiteLibrary" should "support building a metadata set with no repositories" in {
+  "A CiteLibrary" should "support building a metadata set with no repositories" in   {
 
     val cex = """#!citelibrary
 name#demo
@@ -16,12 +16,12 @@ license#public domain
 """
     val citeLib = CiteLibrary(cex,"#",",")
     assert(citeLib.name == "demo")
-    //assert(citeLib.urn == Cite2Urn("urn:cite2:cex:democex.2017_1:test"))
+    assert(citeLib.urn == Cite2Urn("urn:cite2:cex:democex.2017_1:test"))
     assert(citeLib.license == "public domain")
   }
 
- /*
-  it should "support building a text repository from a CEX source string" in {
+
+  it should "support building a text repository from a CEX source string" in  {
 
     val cex = """#!citelibrary
 name#demo
@@ -40,22 +40,22 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
   }
 
 
-
   it should "support building a CITE Collection repository from a CEX string" in {
     val cex = """#!citelibrary
 name#demo
 urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
-#!citecatalog
-collection#urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+#!citecollections
+urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
 
-property#urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:msA.v1.label:#Label#String#
-property#urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
-property#urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
-property#urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
-property#urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
+#!citeproperties
+urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.label:#Label#String#
+urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
+urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
+urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
 
 #!citedata
 siglum#sequence#urn#rv#label#codex
@@ -66,7 +66,7 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
 
     val citeRepo = CiteLibrary(cex,"#",",")
     val catalogedCollections = 1
-    assert(citeRepo.collectionRepository.get.catalog.size == catalogedCollections)
+      assert(citeRepo.collectionRepository.get.catalog.size == catalogedCollections)
     // 3 records, 6 properties
     assert(citeRepo.collectionRepository.get.data.size == 3*6)
   }
@@ -92,15 +92,16 @@ name#demo
 urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 
-#!citecatalog
-collection#urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+#!citecollections
+urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
 
-property#urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:msA.v1.label:#Label#String#
-property#urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
-property#urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
-property#urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
-property#urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
+#!citeproperties
+urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.label:#Label#String#
+urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
+urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
+urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
 
 #!citedata
 siglum#sequence#urn#rv#label#codex
@@ -117,7 +118,8 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
     assert ( ccRepo.data.size == expectedProps)
   }
 
-  it should "build image extensions from CEX" in {
+
+  it should "build image extensions from CEX" in  {
     val cexSrc = """
 #!citelibrary
 name#demo
@@ -134,15 +136,16 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:#book/section#Herodotus#Histories#Englis
 urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inquiry of Herodotus of Halicarnassos, to the end that neither the deeds of men may be forgotten by lapse of time, nor the works great and marvellous, which have been produced some by Hellenes and some by Barbarians, may lose their renown; and especially that the causes may be remembered for which these waged war with one another.
 
 
-#!citecatalog
-collection#urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+#!citecollections
+urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
 
-property#urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:msA.v1.label:#Label#String#
-property#urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
-property#urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
-property#urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
-property#urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
+#!citeproperties
+urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.label:#Label#String#
+urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
+urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
+urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
 
 #!citedata
 siglum#sequence#urn#rv#label#codex
@@ -163,6 +166,7 @@ urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
   assert(imgExtensions.protocolMap.size == 1)
 }
 
+
 it should "build a vector of CiteNamespaces from CEX source" in {
   val cexSrc = """
 #!citelibrary
@@ -178,8 +182,36 @@ namespace#hmt#http://www.homermultitext.org/citens/hmt
     assert(ns.abbreviation == "hmt")
     assert(ns.uri == new URI("http://www.homermultitext.org/citens/hmt"))
 }
-*/
-it should "handle missing metadata gracefully" in pending
-it should "ignore 'comment' lines in metadata" in pending
+
+it should "throw an exception if required metadata are missing" in {
+val cexSrc = """
+#!citelibrary
+name#demo
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
+"""
+  try {
+    val citeLib = CiteLibrary(cexSrc,"#",",")
+    fail("Should not have created library")
+  } catch {
+    case iae: IllegalArgumentException => assert(iae.getMessage() == "requirement failed: CEX `citelibrary` block must include a licensing statement")
+    case t: Throwable => fail("Should have thrown illegal argument exception.")
+  }
+
+}
+it should "ignore 'comment' lines in metadata" in {
+  val cexSrc = """
+// Thoughfully annotated data...
+#!citelibrary
+name#demo
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
+//
+// license is never anything but a string:
+license#public domain
+"""
+  val citeLib = CiteLibrary(cexSrc,"#",",")
+  assert(citeLib.name == "demo")
+  assert(citeLib.urn == Cite2Urn("urn:cite2:cex:testcoll.2017a:hdt1node"))
+  assert(citeLib.license == "public domain")
+}
 
 }

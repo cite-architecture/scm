@@ -136,7 +136,7 @@ object CiteLibrary {
     val cex = CexParser(cexString)
     val collectionsBlocks =  cex.blockVector("citecollections")
     val propertiesBlocks = cex.blockVector("citeproperties")
-    if ((collectionsBlocks.size > 1) && (propertiesBlocks.size > 1)) {
+    if ((collectionsBlocks.size > 0) && (propertiesBlocks.size > 0)) {
       val ccr = CiteCollectionRepository(cexString,delimiter,delimiter2)
       Some(ccr)
     } else {
