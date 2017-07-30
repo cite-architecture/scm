@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-stylesheet type="text/xsl" href="proofing/bc-framework.xsl"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
         <fileDesc>
@@ -6,25 +8,16 @@
                 <title>The Histories (for testing)</title>
                 <author>Herodotus</author>
             </titleStmt>
-            <extent>about 1.4mb</extent>
+
             <publicationStmt>
-                <pubPlace>Greenville, SC</pubPlace>
-                <publisher>Furman University/Stoa Consortium</publisher>
-                <date>Sept. 15, 2003</date>
+              <p>Unpublished test data aset</p>
             </publicationStmt>
             <sourceDesc>
                 <bibl>File created electronically; a new edition edited by S.
                     LaBerge and C. Blackwell, collated against Ph.E. Legrand,
-                    ed. He/rodote. Histoires (Paris: Les Belles Lettres) and C.
-                    Hude, ed., Herodoi Historiae (Oxford).</bibl>
+                    ed. Hérodote. Histoires (Paris: Les Belles Lettres) and C. Hude, ed., Herodoi Historiae (Oxford).</bibl>
             </sourceDesc>
         </fileDesc>
-        <profileDesc>
-            <langUsage>
-                <language ident="grc">Greek, in Beta-code</language>
-                <language ident="en">English</language>
-            </langUsage>
-        </profileDesc>
     </teiHeader>
     <text xml:lang="grc">
         <body>
@@ -208,7 +201,7 @@
                         σχεδὸν δὲ καὶ παρὰ τοῖσι ἄλλοισι βαρβάροισι , καὶ ἄνδρα
                         ὀφθῆναι γυμνὸν ἐς αἰσχύνην μεγάλην φέρει . </p>
                 </div>
-                
+
             </div>
             <div n="2" type="book">
                 <div n="t" type="chapter">
@@ -384,7 +377,7 @@
                         ἐς θάλασσαν τῶν Ἐχινάδων νήσων τὰς ἡμισέας ἤδη ἤπειρον
                         πεποίηκε . </p>
                 </div>
-               
+
             </div>
             <div n="3" type="book">
                 <div n="t" type="chapter">
@@ -559,9 +552,9 @@
                         αὐτοὶ Θηβαῖοι . Οὐ γὰρ δὴ ὕεται τὰ ἄνω τῆς Αἰγύπτου τὸ
                         παράπαν · ἀλλὰ καὶ τότε ὕσθησαν αἱ Θῆβαι ψακάδι . </p>
                 </div>
-               
+
             </div>
-           
+
         </body>
     </text>
 </TEI>
