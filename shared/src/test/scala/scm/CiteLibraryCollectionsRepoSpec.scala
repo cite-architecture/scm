@@ -22,16 +22,18 @@ urn#urn:cite2:cex:democex.2017a:test
 
 
 
-  it should "allow a catalog even if there is no content in collections data" in pending /*{
+  it should "allow a catalog even if there is no content in collections data" in {
     val noData = """#!citelibrary
 license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
+
+// Library has two collections:
 #!citecollections
-// Text-bearing surfaces:
+// 1. Text-bearing surfaces:
 urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
-// Documenary images:
-urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A
+// 2. Documentary images:
+urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
 
 #!citeproperties
 // pages
@@ -41,13 +43,17 @@ urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
 urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
 urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
 urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
- manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
+
 // images
 urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
 urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
 urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 """
+    //val collRepo = CiteLibrary.collectionRepoFromCex(noData,"#", ",")
+
     val lib = CiteLibrary(noData, "#",",")
+
+
     lib.collectionRepository match {
       case collOpt: Some[CiteCollectionRepository] => {
         val collRepo = collOpt.get
@@ -56,12 +62,8 @@ urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
       }
       case _ => fail("Did not instantiate CiteCollectionRepository: ${lib.colectionRepository}")
     }
-
-
-
   }
 
-*/
   it should "throw an exception if citedata blocks are included without catalog" in {
     val noCatalog = """#!citelibrary
 license#public domain

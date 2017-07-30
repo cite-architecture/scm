@@ -4,13 +4,13 @@ import edu.holycross.shot.ohco2._
 
 class LocalFileConverterSpec extends FlatSpec {
 
-  "A LocalFileConverter" should "build a text repository from cataloged local XML files" in pending /*{
-    val repo = LocalFileConverter.textRepoFromFiles("jvm/src/test/resources/xmlrepository/inventory.xml","jvm/src/test/resources/xmlrepository/citationconfig.xml", "jvm/src/test/resources/xmlrepository/texts")
+  "A LocalFileConverter" should "build a text repository from cataloged local XML files" in {
+    val repo = LocalFileConverter.textRepoFromFiles("jvm/src/test/resources/xmlrepository/ctscatalog.cex","jvm/src/test/resources/xmlrepository/citationconfig.cex", "jvm/src/test/resources/xmlrepository/texts")
     repo match {
       case tr : TextRepository => assert(true)
       case _ => fail ("Should have created a TextRepository")
     }
-  }*/
+  }
 
   it should "build a text repository from cataloged local Markdown files" in pending /*{
     val repo = LocalFileConverter.textRepoFromFiles("jvm/src/test/resources/markdownrepository/inventory.xml","jvm/src/test/resources/markdownrepository/citationconfig.xml", "jvm/src/test/resources/markdownrepository/texts")

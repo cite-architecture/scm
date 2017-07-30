@@ -2,7 +2,7 @@ package edu.holycross.shot.scm
 
 
 import scala.scalajs.js
-import js.annotation.JSExport
+import scala.scalajs.js.annotation._
 
 import java.net.URI
 
@@ -12,6 +12,6 @@ import java.net.URI
 * @param uri Unique URI for namespace.
 *
 */
-@JSExport  case class  CiteNamespace(abbreviation: String,uri: URI) {
+@JSExportAll  case class  CiteNamespace(abbreviation: String,uri: URI) {
 
 }

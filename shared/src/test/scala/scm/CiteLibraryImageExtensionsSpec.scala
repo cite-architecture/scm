@@ -41,7 +41,7 @@ license#public domain
 
 
 
-  it should "return None if there image extensions do not match collections data" in pending /* {
+  it should "return None if image extensions do not match collections data" in pending /* {
 
     val noMatch = """
 #!citelibrary

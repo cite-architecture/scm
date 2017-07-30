@@ -1,10 +1,6 @@
 name := "Scala CITE manager"
 
-//crossScalaVersions := Seq("2.10.6","2.11.8", "2.12.1")
-//crossScalaVersions := Seq("2.10.6","2.11.8")
-
-//crossScalaVersions := Seq("2.11.8", "2.12.1")
-crossScalaVersions := Seq("2.11.8")
+crossScalaVersions := Seq("2.11.8", "2.12.3")
 scalaVersion := "2.11.8"
 
 lazy val root = project.in(file(".")).
@@ -28,20 +24,17 @@ lazy val crossed = crossProject.in(file(".")).
         "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
 
         "edu.holycross.shot.cite" %%% "xcite" % "2.6.0",
-        "edu.holycross.shot" %%% "ohco2" % "10.0.0",
+        "edu.holycross.shot" %%% "ohco2" % "10.1.0",
         "edu.holycross.shot" %%% "citeobj" % "4.2.0",
         "edu.holycross.shot" %%% "citerelations" % "1.1.1",
         "edu.holycross.shot" %%% "cex" % "6.0.0"
       )
     ).
     jvmSettings(
-      libraryDependencies ++= Seq(
-      )
     ).
     jsSettings(
       skip in packageJSDependencies := false,
-      persistLauncher in Compile := true,
-      persistLauncher in Test := false
+      scalaJSUseMainModuleInitializer in Compile := true
 
     )
 

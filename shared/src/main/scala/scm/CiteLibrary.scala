@@ -9,7 +9,7 @@ import edu.holycross.shot.citerelation._
 import java.net.URI
 
 import scala.scalajs.js
-import js.annotation.JSExport
+import scala.scalajs.js.annotation._
 
 
 
@@ -24,7 +24,7 @@ import js.annotation.JSExport
 * @param imageExtensions Optional list of binary image implementations.
 * @param relationSet Optional set of triple statements.
 */
-@JSExport  case class  CiteLibrary (
+@JSExportAll  case class  CiteLibrary (
   name: String,
   urn: Cite2Urn,
   license: String,
