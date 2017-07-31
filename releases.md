@@ -1,5 +1,7 @@
 # Releases
 
+**5.0.1**: Harmonizes versions of all dependencies so support ScalaJS 0.6.18 and Scala 2.12.3.
+
 **5.0.0**: Update to version 10.1.0  of `ohco2` introduces API-breaking changes.  Updated build now compiles for all versions of scala 2.11 or higher.
 
 **4.2.0**: Update to `citeobj` library adds new implementations of `BinaryImageSource`.
