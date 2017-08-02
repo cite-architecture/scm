@@ -1,5 +1,7 @@
 # Releases
 
+**5.1.1**:  Incorporate bug fixes in library dependencies.
+
 **5.1.0**:  Adds `DataModel` class and support for CEX `datamodels` block.
 
 **5.0.1**: Harmonizes versions of all dependencies so support ScalaJS 0.6.18 and Scala 2.12.3.
