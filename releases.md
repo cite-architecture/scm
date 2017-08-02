@@ -1,6 +1,8 @@
 # Releases
 
-**5.1.1**:  Incorporate bug fixes in library dependencies.
+**5.1.2**: Incorporates an important series of bug fixes in the `citeobj` library.
+
+**5.1.1**:  Incorporates bug fixes in library dependencies.
 
 **5.1.0**:  Adds `DataModel` class and support for CEX `datamodels` block.
 

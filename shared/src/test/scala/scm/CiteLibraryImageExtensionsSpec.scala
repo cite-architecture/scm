@@ -74,9 +74,11 @@ urn:cite2:hmt:vaimg.2017a:#localJpegString#./#urn:cite2:hmt:vaimg.2017a.rights:
 
 
 #!citecollections
+URN#Description#Labelling property#Ordering property#License
 urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
 
 #!citeproperties
+Property#Label#Type#Authority list
 urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
 urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
 urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#

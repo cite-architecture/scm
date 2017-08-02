@@ -30,12 +30,14 @@ urn#urn:cite2:cex:democex.2017a:test
 
 // Library has two collections:
 #!citecollections
+URN#Description#Labelling property#Ordering property#License
 // 1. Text-bearing surfaces:
 urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscriptscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
 // 2. Documentary images:
 urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
 
 #!citeproperties
+Property#Label#Type#Authority list
 // pages
 urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
 urn:cite2:hmt:msA.v1.label:#Label#String#
@@ -161,10 +163,10 @@ name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 
 #!citecatalog
-collection#urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
-property#urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
-property#urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
+urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
+urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
+urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 
 #!citedata
 urn#caption#rights
@@ -179,17 +181,20 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.WRONGVERSION#Natural light photograph of 
     }
   }
 */
-  it should "return some collection if catalog and data are consistent" in pending /* {
+  it should "return some collection if catalog and data are consistent" in  {
 
     val legit = """#!citelibrary
 license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
-#!citecatalog
-collection#urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
-property#urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
-property#urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
-property#urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
+#!citecollections
+URN#Description#Labelling property#Ordering property#License
+urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
+urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 #!citedata
 urn#caption#rights
 urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017a#Natural light photograph of Venetus A: Marcianus Graecus Z. 454 (= 822), folio 12, recto#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
@@ -201,6 +206,6 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017a#Natural light photograph of Venetus
         case _ => fail("Should have found CiteCollectionRepository")
       }
     }
-*/
+
 
 }
