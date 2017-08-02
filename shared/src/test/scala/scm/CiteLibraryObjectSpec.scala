@@ -75,7 +75,7 @@ urn#not a urn
       val lib = CiteLibrary(badUrn,"#",",")
       fail ("Should not have created library")
     } catch {
-      case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: wrong number of components in  not a urn - 1")
+      case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: wrong number of components in  'not a urn' (1)")
       case t: Throwable => fail("Should have thrown an IllegalArgumentException, but threw " + t)
     }
   }
