@@ -1,5 +1,9 @@
 # Releases
 
+
+**5.1.4**: New version of `citeobj` library fixes a bug in computing paths for some image extensions.
+
+
 **5.1.3**: Incorporates bug fixes in searching CiteCollectionRepositories.
 
 
