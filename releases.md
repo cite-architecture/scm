@@ -1,5 +1,8 @@
 # Releases
 
+**5.1.3**: Incorporates important additions to the `ohco2` library.
+
+
 **5.1.2**: Incorporates an important series of bug fixes in the `citeobj` library.
 
 **5.1.1**:  Incorporates bug fixes in library dependencies.
