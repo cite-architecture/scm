@@ -1,6 +1,12 @@
 # Releases
 
-**5.1.3**: Incorporates important additions to the `ohco2` library.
+**5.1.5**: Incoporates important additions to the `ochoc2` library.
+
+
+**5.1.4**: New version of `citeobj` library fixes a bug in computing paths for some image extensions.
+
+
+**5.1.3**: Incorporates bug fixes in searching CiteCollectionRepositories.
 
 
 **5.1.2**: Incorporates an important series of bug fixes in the `citeobj` library.
