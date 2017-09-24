@@ -1,5 +1,7 @@
 # Releases
 
+**5.1.6**: Incoporates `ochoc2` 10.4.0 with new URN algebra implementation and assorted bug fixes.
+
 **5.1.5**: Incoporates important additions to the `ochoc2` library.
 
 
