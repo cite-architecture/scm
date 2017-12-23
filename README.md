@@ -37,6 +37,6 @@ Apply a task to all cross-compiled versions by preceding it with `+ `.  For exam
 ## Documentation and examples of usage
 
 
-**NB**:  parts of this documentation are not yet up to date with `scm` version 5.0 (and are labelled in the wiki with warnings).
+**NB**:  parts of this documentation are not yet up to date with `scm` version 5.0 (and are labelled in the documentation with warnings).
 
-See the [project wiki](https://github.com/cite-architecture/scm/wiki).
+See the [project website](https://cite-architecture.github.io/scm/).
