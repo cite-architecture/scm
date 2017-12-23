@@ -1,1 +1,7 @@
-User documentation for serving as ghpages goes here.
+---
+title: SCM home
+layout: page
+---
+
+
+User docs currently in project wiki will go here.

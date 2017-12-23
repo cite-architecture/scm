@@ -1,0 +1,23 @@
+
+
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Scala CITE manager
+tagline:          ''
+description:      'A cross-platform library for managing archives of citable scholarly resources'
+
+
+baseurl: '/scm/'
+
+
+author:
+  name:           'Neel Smith'
+
+
+links:
+  - title:  Github repository
+    url:  https://github.com/cite-architecture/scm
+    external: true
