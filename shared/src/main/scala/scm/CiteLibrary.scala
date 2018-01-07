@@ -144,7 +144,7 @@ object CiteLibrary {
     }
   }
 
-  /** Create optional CITE Collecctions repository from CEX source.
+  /** Create optional CITE Collections repository from CEX source.
   *
   * @param cex Parsed CEX source.
   * @param delimiter  Column-delimiter used in CEX source.
