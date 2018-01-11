@@ -21,7 +21,6 @@ import scala.scalajs.js.annotation._
 * @param namespaces Possibly empty vector of [[CiteNamespace]]s.
 * @param textRepository Optional, cataloged corpus of citable texts.
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
-* @param imageExtensions Optional list of binary image implementations.
 * @param relationSet Optional set of triple statements.
 */
 @JSExportAll  case class  CiteLibrary (
@@ -32,7 +31,8 @@ import scala.scalajs.js.annotation._
   textRepository: Option[TextRepository] = None,
   collectionRepository: Option[CiteCollectionRepository] = None,
   imageExtensions: Option[ImageExtensions] = None,
-  relationSet: Option[CiteRelationSet] = None
+  relationSet: Option[CiteRelationSet] = None,
+  dataModels: Option[Vector[DataModel]] = None
  ) {
 
   /** True if TextRepository is instantiated.
@@ -56,10 +56,21 @@ import scala.scalajs.js.annotation._
 
   /** True if ImageExtensions is instantiated.
   */
+  @deprecated
   def hasImageExtensions: Boolean = {
     imageExtensions match {
       case None => false
       case t: Some[ImageExtensions] => true
+    }
+  }
+
+  /** True if DataModels is instantiated.
+  */
+  def hasDataModels: Boolean = {
+    dataModels match {
+      case None => false
+      case t:Some[Vector[DataModel]] if t.size > 0 => true
+      case _ => false
     }
   }
 
@@ -156,6 +167,20 @@ object CiteLibrary {
       None
     } else {
       Some(relations)
+    }
+  }
+
+
+  /** Create option of vector of [[DataModel]]s from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
+  */
+  def dataModelsFromCex(cexString: String, delimiter: String = "#"): Option[Vector[DataModel]] = {
+    val dm:Vector[DataModel] = DataModel.vectorFromCex(cexString, delimiter)
+    dm.size match {
+      case 0 => Some(dm)
+      case _ => None
     }
   }
 
