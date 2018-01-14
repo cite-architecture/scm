@@ -68,10 +68,46 @@ import scala.scalajs.js.annotation._
   */
   def hasDataModels: Boolean = {
     dataModels match {
-      case None => false
-      case t:Some[Vector[DataModel]] if t.size > 0 => true
-      case _ => false
+      case None => { 
+        false 
+      }
+      case t:Some[Vector[DataModel]] if t.size > 0 => { 
+        true 
+      }
+      case _ => { 
+        false 
+      }
     }
+  }
+
+  /** Returns a vector of datamodels that apply to a given collection URN
+  * @param collUrn 
+  * @returns Vector[Cite2Urn]
+  */
+  def modelsForCollection(collUrn:Cite2Urn):Vector[Cite2Urn] = {
+      val colls:Vector[Cite2Urn] = {
+        if (this.hasDataModels){
+          this.dataModels.get.filter( _.collection ~~ collUrn).map(m => m.model) 
+        } else {
+          Vector()
+        }
+      }
+      colls
+  }
+
+  /** Returns a [possibly empty] vector of collectionmodels that apply to a given data model
+  * @param modelUrn 
+  * @returns Vector[Cite2Urn]
+  */
+  def collectionsForModel(modelUrn:Cite2Urn):Vector[Cite2Urn] = {
+      val datamodels:Vector[Cite2Urn] = {
+        if (this.hasDataModels) {
+          this.dataModels.get.filter( _.model ~~ modelUrn).map(m => m.collection) 
+        } else {
+          Vector()
+        }
+      }
+      datamodels 
   }
 
 
@@ -179,8 +215,8 @@ object CiteLibrary {
   def dataModelsFromCex(cexString: String, delimiter: String = "#"): Option[Vector[DataModel]] = {
     val dm:Vector[DataModel] = DataModel.vectorFromCex(cexString, delimiter)
     dm.size match {
-      case 0 => Some(dm)
-      case _ => None
+      case 0 => None
+      case _ => Some(dm)
     }
   }
 
@@ -210,13 +246,13 @@ object CiteLibrary {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
     val nsVector = namespacesFromCex(cex,delimiter)
-
+    val dataModels = dataModelsFromCex(cexString,delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = ImageExtensions(cexString,delimiter)
     val relationSet = relationsFromCex(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet,dataModels)
   }
 
 }

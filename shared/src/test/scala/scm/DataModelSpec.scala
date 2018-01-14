@@ -1,11 +1,16 @@
 package edu.holycross.shot.scm
 import org.scalatest.FlatSpec
-
+import scala.io.Source
 import edu.holycross.shot.cite._
 
 import java.net.URI
 
 class DataModelSpec extends FlatSpec {
+
+
+  val testCex = "shared/src/test/resources/datamodels.cex"
+  val bigCex:String = Source.fromFile(testCex).getLines.mkString("\n")
+  val bigCiteLib = CiteLibrary(bigCex,"#",",")
 
   "The DataModel object" should "create a DataModel from a single line of CEX data" in {
     val cex = "urn:cite2:hmt:dse.2017a:#urn:cite2:dse:datamodel.v1:#DSE model#Diplomatic Scholarly Edition (DSE) model.  See documentation at <https://github.com/cite-architecture/dse>."
@@ -57,6 +62,27 @@ urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image
 
     val expectedModel1 = Cite2Urn("urn:cite2:cite:datamodels.v1:imagemodel")
     assert(model1.model == expectedModel1)
+  }
+
+  // The below rely on the CEX file in /shared/src/test/resources
+
+  it should "read a big CEX file with datamodels" in {
+    assert( bigCiteLib.hasDataModels )
+  }
+
+  it should "report which models apply to a given collection" in {
+    val hasTwo:Cite2Urn = Cite2Urn("urn:cite2:hmt:vaimg.2017a:")
+    val hasOne:Cite2Urn = Cite2Urn("urn:cite2:hmt:e4img.2017a:")
+
+    assert( bigCiteLib.modelsForCollection(hasTwo).size == 2)
+    assert( bigCiteLib.modelsForCollection(hasOne).size == 1)
+  }
+
+  it should "report which collection apply to a given model" in {
+    val hasTwo:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:imagemodel")
+    val hasOne:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
+    assert( bigCiteLib.collectionsForModel(hasTwo).size == 2)
+    assert( bigCiteLib.collectionsForModel(hasOne).size == 1)
   }
 
 
