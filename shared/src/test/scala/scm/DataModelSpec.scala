@@ -85,5 +85,18 @@ urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image
     assert( bigCiteLib.collectionsForModel(hasOne).size == 1)
   }
 
+  it should "report true when given model applies to a given collection" in {
+    val myModel:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
+    val myUrn:Cite2Urn = Cite2Urn("urn:cite2:hmt:vaimg.2017a:123@0.1,0.2,0.3,0.4")
+    assert (bigCiteLib.modelApplies(myModel,myUrn))
+  }
+
+  it should "report false when given model does not apply to a given collection" in {
+    val myModel:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
+    val myUrn:Cite2Urn = Cite2Urn("urn:cite2:hmt:msA.v1:1r")
+    assert (bigCiteLib.modelApplies(myModel,myUrn) == false )
+  }
+ 
+
 
 }

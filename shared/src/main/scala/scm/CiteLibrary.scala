@@ -80,9 +80,29 @@ import scala.scalajs.js.annotation._
     }
   }
 
+  /** Returns true if a given model applies to a given URN
+  * @param modelUrn
+  * @param objectUrn
+  */
+  def modelApplies(modelUrn:Cite2Urn, objectUrn:Cite2Urn):Boolean = {
+    if (this.hasDataModels){
+      val c4m:Vector[Cite2Urn] = modelsForCollection(objectUrn)
+      val doesItApply:Boolean = {
+        if (c4m.size < 1) { 
+          false 
+        } else {
+          if ( c4m.contains(modelUrn)) { true } else { false }
+        }
+      }
+      doesItApply
+    } else {
+      false
+    }
+  }
+
+
   /** Returns a vector of datamodels that apply to a given collection URN
   * @param collUrn 
-  * @returns Vector[Cite2Urn]
   */
   def modelsForCollection(collUrn:Cite2Urn):Vector[Cite2Urn] = {
       val colls:Vector[Cite2Urn] = {
@@ -97,7 +117,6 @@ import scala.scalajs.js.annotation._
 
   /** Returns a [possibly empty] vector of collectionmodels that apply to a given data model
   * @param modelUrn 
-  * @returns Vector[Cite2Urn]
   */
   def collectionsForModel(modelUrn:Cite2Urn):Vector[Cite2Urn] = {
       val datamodels:Vector[Cite2Urn] = {

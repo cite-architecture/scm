@@ -18,7 +18,7 @@ urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:binaryimg#Citable image 
 #!citecollections
 URN#Description#Labelling property#Ordering property#License
 urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
-urn:cite2:hmt:e4.v1:#Pages of the Omega 1.12 manuscript#urn:cite2:hmt:e4.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+urn:cite2:hmt:e4.v1:#Pages of the Omega 1.12 manuscript#urn:cite2:hmt:e4.v1.label:#urn:cite2:hmt:e4.v1.sequence:#CC-attribution-share-alike
 urn:cite2:hmt:vaimg.v1:#Images of the Venetus A manuscript#urn:cite2:hmt:vaimg.v1.label:##CC-attribution-share-alike
 urn:cite2:hmt:e4img.2017a:#Images of the Omega 1.12 manuscript#urn:cite2:hmt:e4img.2017a.label:##CC-attribution-share-alike
 urn:cite2:fufolio:msChad.2017a:#CITE Collection capturing Folio Sides of the St. Chad Manuscript#urn:cite2:fufolio:msChad.2017a.name:#urn:cite2:fufolio:msChad.2017a.sequence:#CC-attribution-share-alike
@@ -39,7 +39,7 @@ urn:cite2:cite:datamodels.v1.description:#Description#String#
 Property#Label#Type#Authority list
 urn:cite2:hmt:binaryimg.v1.urn:#Binary Image#Cite2Urn#
 urn:cite2:hmt:binaryimg.v1.label:#Label#String#
-urn:cite2:hmt:binaryimg.v1.collection:#Image Collection#String#
+urn:cite2:hmt:binaryimg.v1.collection:#Image Collection#Cite2Urn#
 urn:cite2:hmt:binaryimg.v1.protocol:#Protocol#String#iiif,iipImageString
 urn:cite2:hmt:binaryimg.v1.path:#Path on Server#String#
 urn:cite2:hmt:binaryimg.v1.url:#Service URN Base#String#
@@ -114,8 +114,8 @@ urn:cite2:hmt:textblock.testB.notes:#Notes#String#
 
 #!citedata
 urn#label#collection#protocol#path#url#rights
-urn:cite2:hmt:binaryimg.v1:vaimg#Binary data for images of the Venetus A manuscript#urn:cite2:hmt:vaimg.2017a:#iipImageString#/project/homer/pyramidal/deepzoom/hmt/vaimg/2017a/#http://www.homer#Creative Commons Attribution Share-Alike.
-urn:cite2:hmt:binaryimg.v1:e4img#Binary data for images of the Escrorial Ω 1.12  manuscript#urn:cite2:hmt:e4img.2017a:#iipImageString#/project/homer/pyramidal/deepzoom/hmt/e4img/2017a/#http://www.homer#Creative Commons Attribution Share-Alike.
+urn:cite2:hmt:binaryimg.v1:vaimg#Binary data for images of the Venetus A manuscript#urn:cite2:hmt:vaimg.2017a:#iipImageString#/project/homer/pyramidal/VenA/#http://www.homermultitext.org/iipsrv?#Creative Commons Attribution Share-Alike.
+urn:cite2:hmt:binaryimg.v1:e4img#Binary data for images of the Escrorial Ω 1.12  manuscript#urn:cite2:hmt:e4img.2017a:#iipImageString#/project/homer/pyramidal/E4/#http://www.homermultitext.org/iipsrv?#Creative Commons Attribution Share-Alike.
 
 #!citedata
 urn#label#description
