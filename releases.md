@@ -1,9 +1,11 @@
 # Releases
 
+**5.2.0**: Extended functionality in updated versions of several CITE library dependencies.  Binary publication for JVM and JS in Scala 2.12.
+
+
 **5.1.6**: Incoporates `ochoc2` 10.4.0 with new URN algebra implementation and assorted bug fixes.
 
 **5.1.5**: Incoporates important additions to the `ochoc2` library.
-
 
 **5.1.4**: New version of `citeobj` library fixes a bug in computing paths for some image extensions.
 
