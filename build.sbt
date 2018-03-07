@@ -1,7 +1,9 @@
 name := "Scala CITE manager"
 
-//crossScalaVersions := Seq("2.11.8", "2.12.3")
-scalaVersion := "2.12.3"
+//crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.4")
+crossScalaVersions in ThisBuild := Seq("2.12.4")
+scalaVersion := (crossScalaVersions in ThisBuild).value.last
+
 
 lazy val root = project.in(file(".")).
     aggregate(crossedJVM, crossedJS).
