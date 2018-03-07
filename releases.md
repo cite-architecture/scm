@@ -1,5 +1,7 @@
 # Releases
 
+**5.3.0**: Added methods for associating data models with CITE collections.
+
 **5.2.0**: Extended functionality in updated versions of several CITE library dependencies.  Binary publication for JVM and JS in Scala 2.12.
 
 

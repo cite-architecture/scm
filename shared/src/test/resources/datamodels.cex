@@ -1,0 +1,264 @@
+// Library of texts for testing CITE Collections
+// THIS IS NOT SCHOLARLY DATA
+// The pound sign "#" is used as a column divider.
+#!cexversion
+3.0
+#!citelibrary
+name#CITE-Test
+urn#urn:cite2:furman:cex.2017a:cite_test
+license#Creative Commons Attribution Share Alike
+
+#!datamodels
+Collection#Model#Label#Description
+urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image model#CITE architecture model of citable images.  See documentation at <http://cite-architecture.github.io/imagemodel/>.
+urn:cite2:hmt:e4img.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image model#CITE architecture model of citable images.  See documentation at <http://cite-architecture.github.io/imagemodel/>.
+urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:binaryimg#Citable image model#CITE architectur model of binary images manipulable by URN reference.  See <TBA>.
+//urn:cite2:hmt:e4img.2017a:#urn:cite2:cite:datamodels.v1:binaryimg#Citable image model#CITE architecture model of citable images.  See documentation at <http://cite-architecture.github.io/imagemodel/>.
+
+#!citecollections
+URN#Description#Labelling property#Ordering property#License
+urn:cite2:hmt:msA.v1:#Pages of the Venetus A manuscript#urn:cite2:hmt:msA.v1.label:#urn:cite2:hmt:msA.v1.sequence:#CC-attribution-share-alike
+urn:cite2:hmt:e4.v1:#Pages of the Omega 1.12 manuscript#urn:cite2:hmt:e4.v1.label:#urn:cite2:hmt:e4.v1.sequence:#CC-attribution-share-alike
+urn:cite2:hmt:vaimg.v1:#Images of the Venetus A manuscript#urn:cite2:hmt:vaimg.v1.label:##CC-attribution-share-alike
+urn:cite2:hmt:e4img.2017a:#Images of the Omega 1.12 manuscript#urn:cite2:hmt:e4img.2017a.label:##CC-attribution-share-alike
+urn:cite2:fufolio:msChad.2017a:#CITE Collection capturing Folio Sides of the St. Chad Manuscript#urn:cite2:fufolio:msChad.2017a.name:#urn:cite2:fufolio:msChad.2017a.sequence:#CC-attribution-share-alike
+urn:cite2:hmt:textblock.2017a:#Defined text-blocks on the Venetus A manuscript#urn:cite2:hmt:textblock.2017a.label:##CC 3.0 NC-BY-SA
+urn:cite2:hmt:textblock.testA:#Defined text-blocks on the Venetus A manuscript#urn:cite2:hmt:textblock.testA.label:##CC 3.0 NC-BY-SA
+urn:cite2:hmt:textblock.testB:#Defined text-blocks on the Venetus A manuscript#urn:cite2:hmt:textblock.testB.label:##CC 3.0 NC-BY-SA
+// datamodels and extensions
+urn:cite2:cite:datamodels.v1:#CITE data models#urn:cite2:cite:datamodels.v1.label:##Public domain
+urn:cite2:hmt:binaryimg.v1:#Collections of binary images#urn:cite2:hmt:binaryimg.v1.label:##Public domain
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:cite:datamodels.v1.urn:#Data model#Cite2Urn#
+urn:cite2:cite:datamodels.v1.label:#Label#String#
+urn:cite2:cite:datamodels.v1.description:#Description#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:binaryimg.v1.urn:#Binary Image#Cite2Urn#
+urn:cite2:hmt:binaryimg.v1.label:#Label#String#
+urn:cite2:hmt:binaryimg.v1.collection:#Image Collection#Cite2Urn#
+urn:cite2:hmt:binaryimg.v1.protocol:#Protocol#String#iiif,iipImageString
+urn:cite2:hmt:binaryimg.v1.path:#Path on Server#String#
+urn:cite2:hmt:binaryimg.v1.url:#Service URN Base#String#
+urn:cite2:hmt:binaryimg.v1.rights:#Rights#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:fufolio:msChad.2017a.sequence:#Sequence#Number#
+urn:cite2:fufolio:msChad.2017a.urn:#URN#Cite2Urn#
+urn:cite2:fufolio:msChad.2017a.siglum:#Siglum#String#
+urn:cite2:fufolio:msChad.2017a.description:#Description#String#
+urn:cite2:fufolio:msChad.2017a.rv:#Recto/Verso#String#recto,verso
+urn:cite2:fufolio:msChad.2017a.name:#Name#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:msA.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.label:#Label#String#
+urn:cite2:hmt:msA.v1.siglum:#Manuscript siglum#String#
+urn:cite2:hmt:msA.v1.sequence:#Page sequence#Number#
+urn:cite2:hmt:msA.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:msA.v1.codex:#Codex URN#Cite2Urn#
+urn:cite2:hmt:msA.v1.text:#Text#CtsUrn#
+urn:cite2:hmt:msA.v1.image:#Image#Cite2Urn#
+urn:cite2:hmt:msA.v1.imageROI:#ImageROI#Cite2Urn#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:e4.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:e4.v1.label:#Label#String#
+urn:cite2:hmt:e4.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:hmt:e4.v1.sequence:#Page sequence#Number#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:vaimg.v1.urn:#URN#Cite2Urn#
+urn:cite2:hmt:vaimg.v1.label:#Label#String#
+urn:cite2:hmt:vaimg.v1.rights:#Rights#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:e4img.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:e4img.2017a.label:#Label#String#
+urn:cite2:hmt:e4img.2017a.rights:#Rights#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:textblock.2017a.urn:#URN#Cite2Urn#
+urn:cite2:hmt:textblock.2017a.label:#Label#String#
+urn:cite2:hmt:textblock.2017a.folio:#Folio#Cite2Urn#
+urn:cite2:hmt:textblock.2017a.image:#Image#Cite2Urn#
+urn:cite2:hmt:textblock.2017a.imageroi:#ImageROI#Cite2Urn#
+urn:cite2:hmt:textblock.2017a.notes:#Notes#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:textblock.testA.urn:#URN#Cite2Urn#
+urn:cite2:hmt:textblock.testA.label:#Label#String#
+urn:cite2:hmt:textblock.testA.folio:#Folio#Cite2Urn#
+urn:cite2:hmt:textblock.testA.image:#Image#Cite2Urn#
+urn:cite2:hmt:textblock.testA.imageroi:#ImageROI#Cite2Urn#
+urn:cite2:hmt:textblock.testA.notes:#Notes#String#
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:hmt:textblock.testB.urn:#URN#Cite2Urn#
+urn:cite2:hmt:textblock.testB.label:#Label#String#
+urn:cite2:hmt:textblock.testB.folio:#Folio#Cite2Urn#
+urn:cite2:hmt:textblock.testB.image:#Image#Cite2Urn#
+urn:cite2:hmt:textblock.testB.imageroi:#ImageROI#Cite2Urn#
+urn:cite2:hmt:textblock.testB.notes:#Notes#String#
+
+#!citedata
+urn#label#collection#protocol#path#url#rights
+urn:cite2:hmt:binaryimg.v1:vaimg#Binary data for images of the Venetus A manuscript#urn:cite2:hmt:vaimg.2017a:#iipImageString#/project/homer/pyramidal/VenA/#http://www.homermultitext.org/iipsrv?#Creative Commons Attribution Share-Alike.
+urn:cite2:hmt:binaryimg.v1:e4img#Binary data for images of the Escrorial Ω 1.12  manuscript#urn:cite2:hmt:e4img.2017a:#iipImageString#/project/homer/pyramidal/E4/#http://www.homermultitext.org/iipsrv?#Creative Commons Attribution Share-Alike.
+
+#!citedata
+urn#label#description
+urn:cite2:cite:datamodels.v1:binaryimg#Binary image model#Model of binary images manipulable by URN reference.  See <TBA>.
+urn:cite2:cite:datamodels.v1:imagemodel#Citable images#Model of citable images from the CITE Architecture.  See <http://cite-architecture.github.io/imagemodel/>.
+
+#!citedata
+urn#label#rights
+urn:cite2:hmt:vaimg.2017a:VA082RN_0083#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 82, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA083RN_0084#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 83, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA084RN_0085#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 84, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA085RN_0086#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 85, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA086RN_0087#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 86, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA087RN_0088#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 87, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA088RN_0089#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 88, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA089RN_0090#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 89, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+urn:cite2:hmt:vaimg.2017a:VA090RN_0091#Venetus A: Marcianus Graecus Z. 454 (= 822).  Photograph in natural light, folio 90, recto.#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+
+#!citedata
+urn#label#rights
+urn:cite2:hmt:e4img.2017a:e4_553#Escrorial Ω 1.12 (Allen E4) image 553#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_245#Escrorial Ω 1.12 (Allen E4) image 245#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_552#Escrorial Ω 1.12 (Allen E4) image 552#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_244#Escrorial Ω 1.12 (Allen E4) image 244#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_551#Escrorial Ω 1.12 (Allen E4) image 551#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_243#Escrorial Ω 1.12 (Allen E4) image 243#CC Attribution Share-Alike
+urn:cite2:hmt:e4img.2017a:e4_550#Escrorial Ω 1.12 (Allen E4) image 550#CC Attribution Share-Alike
+
+#!ctscatalog
+urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:#book/line#Homeric Epic#Iliad#Greek. Allen, ed. Perseus Digital Library. Creative Commons Attribution 3.0 License##true#grc
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:#book/line/token#Homeric Epic#Iliad#Perseus Greek, following Allen#Syntactical Tokens#true#grc
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:#book/line/lemma#Homeric Epic#Iliad#Perseus Greek, following Allen#Lemmatized Tokens#true#grc
+
+#!ctsdata
+// Allen Iliad
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.1#Μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.2#οὐλομένην, ἣ μυρί᾽ Ἀχαιοῖς ἄλγε᾽ ἔθηκε,
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.3#πολλὰς δ᾽ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.4#ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.5#οἰωνοῖσί τε πᾶσι, Διὸς δ᾽ ἐτελείετο βουλή,
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.6#ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.7#Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.8#Τίς τάρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.9#Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.10#νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.11#οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2:1.12#Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν
+
+// Tokenized Allen
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.1.1#μῆνιν
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.1.2#ἄειδε
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.1.3#θεὰ
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.1.4#Πηληϊάδεω
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.1.5#Ἀχιλῆος
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.1#οὐλομένην
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.2#,
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.3#ἣ
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.4#μυρίʼ
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.5#Ἀχαιοῖς
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.6#ἄλγεʼ
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.7#ἔθηκε
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.tokens:1.2.8#,
+
+// Lemmatized Allen
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.1.1#μῆνις
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.1.2#ἀείδω
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.1.3#θεά
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.1.4#Πηληϊάδης
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.1.5#Ἀχιλλεύς
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.2.1#οὐλόμενος
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.2.3#ὁ
+urn:cts:greekLit:tlg0012.tlg001.perseus_grc2.lemmata:1.2.5#Ἀχαιός
+
+#!citedata
+urn#label#folio#image#imageroi#notes
+urn:cite2:hmt:textblock.2017a:1#text-block 1#urn:cite2:hmt:msa.2017a:12r#urn:cite2:hmt:vaimg.2017a:va012rn_0013#urn:cite2:hmt:vaimg.2017a:va012rn_0013@0.0551,0.2305,0.5115,0.494# #
+urn:cite2:hmt:textblock.2017a:2#text-block 2#urn:cite2:hmt:msa.2017a:12v#urn:cite2:hmt:vaimg.2017a:va012vn_0514#urn:cite2:hmt:vaimg.2017a:va012vn_0514@0.4975,0.2141,0.3814,0.4793# #
+urn:cite2:hmt:textblock.2017a:3#text-block 3#urn:cite2:hmt:msa.2017a:13r#urn:cite2:hmt:vaimg.2017a:va013rn_0014#urn:cite2:hmt:vaimg.2017a:va013rn_0014@0.1722,0.2329,0.3874,0.4793# #
+urn:cite2:hmt:textblock.2017a:4#text-block 4#urn:cite2:hmt:msa.2017a:13v#urn:cite2:hmt:vaimg.2017a:va013vn_0515#urn:cite2:hmt:vaimg.2017a:va013vn_0515@0.4805,0.2239,0.3994,0.4763# #
+urn:cite2:hmt:textblock.2017a:5#text-block 5#urn:cite2:hmt:msa.2017a:14r#urn:cite2:hmt:vaimg.2017a:va014rn_0015#urn:cite2:hmt:vaimg.2017a:va014rn_0015@0.1802,0.2344,0.3844,0.4823# #
+urn:cite2:hmt:textblock.2017a:6#text-block 6#urn:cite2:hmt:msa.2017a:14v#urn:cite2:hmt:vaimg.2017a:va014vn_0516#urn:cite2:hmt:vaimg.2017a:va014vn_0516@0.4775,0.223,0.3654,0.4745# #
+urn:cite2:hmt:textblock.2017a:7#text-block 7#urn:cite2:hmt:msa.2017a:15r#urn:cite2:hmt:vaimg.2017a:va015rn_0016#urn:cite2:hmt:vaimg.2017a:va015rn_0016@0.1782,0.2171,0.3954,0.4838# #
+urn:cite2:hmt:textblock.2017a:8#text-block 8#urn:cite2:hmt:msa.2017a:15v#urn:cite2:hmt:vaimg.2017a:va015vn_0517#urn:cite2:hmt:vaimg.2017a:va015vn_0517@0.4785,0.2126,0.4084,0.4718# #
+urn:cite2:hmt:textblock.2017a:9#text-block 9#urn:cite2:hmt:msa.2017a:16r#urn:cite2:hmt:vaimg.2017a:va016rn_0017#urn:cite2:hmt:vaimg.2017a:va016rn_0017@0.1772,0.1961,0.3764,0.4838# #
+urn:cite2:hmt:textblock.2017a:10#text-block 10#urn:cite2:hmt:msa.2017a:16v#urn:cite2:hmt:vaimg.2017a:va016vn_0518#urn:cite2:hmt:vaimg.2017a:va016vn_0518@0.4745,0.2171,0.3574,0.4696# #
+urn:cite2:hmt:textblock.2017a:11#text-block 11#urn:cite2:hmt:msa.2017a:17r#urn:cite2:hmt:vaimg.2017a:va017rn_0018#urn:cite2:hmt:vaimg.2017a:va017rn_0018@0.1682,0.2006,0.3814,0.4778# #
+
+#!citedata
+urn#label#folio#image#imageroi#notes
+urn:cite2:hmt:textblock.testa:1#text-block 1#urn:cite2:hmt:msa.testa:12r#urn:cite2:hmt:vaimg.testa:va012rn_0013#urn:cite2:hmt:vaimg.testa:va012rn_0013@0.0551,0.2305,0.5115,0.494# #
+urn:cite2:hmt:textblock.testa:2#text-block 2#urn:cite2:hmt:msa.testa:12v#urn:cite2:hmt:vaimg.testa:va012vn_0514#urn:cite2:hmt:vaimg.testa:va012vn_0514@0.4975,0.2141,0.3814,0.4793# #
+urn:cite2:hmt:textblock.testa:3#text-block 3#urn:cite2:hmt:msa.testa:13r#urn:cite2:hmt:vaimg.testa:va013rn_0014#urn:cite2:hmt:vaimg.testa:va013rn_0014@0.1722,0.2329,0.3874,0.4793# #
+urn:cite2:hmt:textblock.testa:4#text-block 4#urn:cite2:hmt:msa.testa:13v#urn:cite2:hmt:vaimg.testa:va013vn_0515#urn:cite2:hmt:vaimg.testa:va013vn_0515@0.4805,0.2239,0.3994,0.4763# #
+urn:cite2:hmt:textblock.testa:5#text-block 5#urn:cite2:hmt:msa.testa:14r#urn:cite2:hmt:vaimg.testa:va014rn_0015#urn:cite2:hmt:vaimg.testa:va014rn_0015@0.1802,0.2344,0.3844,0.4823# #
+urn:cite2:hmt:textblock.testa:6#text-block 6#urn:cite2:hmt:msa.testa:14v#urn:cite2:hmt:vaimg.testa:va014vn_0516#urn:cite2:hmt:vaimg.testa:va014vn_0516@0.4775,0.223,0.3654,0.4745# #
+urn:cite2:hmt:textblock.testa:7#text-block 7#urn:cite2:hmt:msa.testa:15r#urn:cite2:hmt:vaimg.testa:va015rn_0016#urn:cite2:hmt:vaimg.testa:va015rn_0016@0.1782,0.2171,0.3954,0.4838# #
+
+#!citedata
+urn#label#folio#image#imageroi#notes
+urn:cite2:hmt:textblock.testB:1#Text-block 1#urn:cite2:hmt:msA.testB:12r#urn:cite2:hmt:vaimg.testB:VA012RN_0013#urn:cite2:hmt:vaimg.testB:VA012RN_0013@0.0551,0.2305,0.5115,0.494# #
+urn:cite2:hmt:textblock.testB:2#Text-block 2#urn:cite2:hmt:msA.testB:12v#urn:cite2:hmt:vaimg.testB:VA012VN_0514#urn:cite2:hmt:vaimg.testB:VA012VN_0514@0.4975,0.2141,0.3814,0.4793# #
+urn:cite2:hmt:textblock.testB:3#Text-block 3#urn:cite2:hmt:msA.testB:13r#urn:cite2:hmt:vaimg.testB:VA013RN_0014#urn:cite2:hmt:vaimg.testB:VA013RN_0014@0.1722,0.2329,0.3874,0.4793# #
+urn:cite2:hmt:textblock.testB:4#Text-block 4#urn:cite2:hmt:msA.testB:13v#urn:cite2:hmt:vaimg.testB:VA013VN_0515#urn:cite2:hmt:vaimg.testB:VA013VN_0515@0.4805,0.2239,0.3994,0.4763# #
+urn:cite2:hmt:textblock.testB:5#Text-block 5#urn:cite2:hmt:msA.testB:14r#urn:cite2:hmt:vaimg.testB:VA014RN_0015#urn:cite2:hmt:vaimg.testB:VA014RN_0015@0.1802,0.2344,0.3844,0.4823# #
+urn:cite2:hmt:textblock.testB:6#Text-block 6#urn:cite2:hmt:msA.testB:14v#urn:cite2:hmt:vaimg.testB:VA014VN_0516#urn:cite2:hmt:vaimg.testB:VA014VN_0516@0.4775,0.223,0.3654,0.4745# #
+urn:cite2:hmt:textblock.testB:7#Text-block 7#urn:cite2:hmt:msA.testB:15r#urn:cite2:hmt:vaimg.testB:VA015RN_0016#urn:cite2:hmt:vaimg.testB:VA015RN_0016@0.1782,0.2171,0.3954,0.4838# #
+urn:cite2:hmt:textblock.testB:8#Text-block 8#urn:cite2:hmt:msA.testB:15v#urn:cite2:hmt:vaimg.testB:VA015VN_0517#urn:cite2:hmt:vaimg.testB:VA015VN_0517@0.4785,0.2126,0.4084,0.4718# #
+urn:cite2:hmt:textblock.testB:9#Text-block 9#urn:cite2:hmt:msA.testB:16r#urn:cite2:hmt:vaimg.testB:VA016RN_0017#urn:cite2:hmt:vaimg.testB:VA016RN_0017@0.1772,0.1961,0.3764,0.4838# #
+
+#!citedata
+sequence#urn#siglum#description#rv#name
+1#urn:cite2:fufolio:msChad.2017a:FrontBoardv#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#verso#msChad-FrontBoardv
+2#urn:cite2:fufolio:msChad.2017a:1r#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#recto#msChad-1r
+3#urn:cite2:fufolio:msChad.2017a:1v#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#verso#msChad-1v
+4#urn:cite2:fufolio:msChad.2017a:2r#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#recto#msChad-2r
+5#urn:cite2:fufolio:msChad.2017a:2v#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#verso#msChad-2v
+6#urn:cite2:fufolio:msChad.2017a:3r#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#recto#msChad-3r
+7#urn:cite2:fufolio:msChad.2017a:3v#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#verso#msChad-3v
+8#urn:cite2:fufolio:msChad.2017a:4r#msChad#The St. Chad Gospels of Lichfield Cathedral (Latin: 8th c. CE)#recto#msChad-4r
+
+#!citedata
+urn#label#rv#sequence
+urn:cite2:hmt:e4.v1:1r#Escorial Omega 1.12 folio 1r#recto#1
+urn:cite2:hmt:e4.v1:1v#Escorial Omega 1.12 folio 1v#verso#2
+urn:cite2:hmt:e4.v1:2r#Escorial Omega 1.12 folio 2r#recto#3
+urn:cite2:hmt:e4.v1:2v#Escorial Omega 1.12 folio 2v#verso#4
+urn:cite2:hmt:e4.v1:3r#Escorial Omega 1.12 folio 3r#recto#5
+urn:cite2:hmt:e4.v1:3v#Escorial Omega 1.12 folio 3v#verso#6
+urn:cite2:hmt:e4.v1:4r#Escorial Omega 1.12 folio 4r#recto#7
+urn:cite2:hmt:e4.v1:4v#Escorial Omega 1.12 folio 4v#verso#8
+urn:cite2:hmt:e4.v1:5r#Escorial Omega 1.12 folio 5r#recto#9
+urn:cite2:hmt:e4.v1:5v#Escorial Omega 1.12 folio 5v#verso#10
+urn:cite2:hmt:e4.v1:6r#Escorial Omega 1.12 folio 6r#recto#11
+urn:cite2:hmt:e4.v1:6v#Escorial Omega 1.12 folio 6v#verso#12
+urn:cite2:hmt:e4.v1:7r#Escorial Omega 1.12 folio 7r#recto#13
+
+#!citedata
+siglum#sequence#urn#rv#label#codex#text#image#imageROI
+msA#1#urn:cite2:hmt:msA.v1:1r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 1r#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001.allen:1.1-1.25#urn:cite2:hmt:vaimg.v1:VA012RN_0013#urn:cite2:hmt:vaimg.v1:VA012RN_0013@0.208,0.2087,0.086,0.0225
+msA#2#urn:cite2:hmt:msA.v1:1v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 1v#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001.allen:1.26-1.50#urn:cite2:hmt:vaimg.v1:VA012VN_0514#urn:cite2:hmt:vaimg.v1:VA012VN_0514@0.4975,0.2141,0.3814,0.4793
+msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 2r#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001.allen:1.51-1.75#urn:cite2:hmt:vaimg.v1:VA013RN_0014#urn:cite2:hmt:vaimg.v1:VA013RN_0014@0.1722,0.2329,0.3874,0.4793
+msA#4#urn:cite2:hmt:msA.v1:2v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 2v#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001.msA:1.76-1.100#urn:cite2:hmt:vaimg.v1:VA013VN_0515#urn:cite2:hmt:vaimg.v1:VA013VN_0515@0.4805,0.2239,0.3994,0.4763
+msA#5#urn:cite2:hmt:msA.v1:3r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 3r#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001.msA:1.101-1.125#urn:cite2:hmt:vaimg.v1:VA014RN_0015#urn:cite2:hmt:vaimg.v1:VA014RN_0015@0.1802,0.2344,0.3844,0.4823
+msA#6#urn:cite2:hmt:msA.v1:3v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 3v#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001:1.126-1.150#urn:cite2:hmt:vaimg.v1:VA014VN_0516#urn:cite2:hmt:vaimg.v1:VA014VN_0516@0.4775,0.223,0.3654,0.4745
+msA#7#urn:cite2:hmt:msA.v1:4r#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 4r#urn:cite2:hmt:codex:msA#urn:cts:greekLit:tlg0012.tlg001:1.151-1.175#urn:cite2:hmt:vaimg.v1:VA015RN_0016#urn:cite2:hmt:vaimg.v1:VA015RN_0016@0.1782,0.2171,0.3954,0.4838

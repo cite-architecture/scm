@@ -21,7 +21,6 @@ import scala.scalajs.js.annotation._
 * @param namespaces Possibly empty vector of [[CiteNamespace]]s.
 * @param textRepository Optional, cataloged corpus of citable texts.
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
-* @param imageExtensions Optional list of binary image implementations.
 * @param relationSet Optional set of triple statements.
 */
 @JSExportAll  case class  CiteLibrary (
@@ -32,7 +31,8 @@ import scala.scalajs.js.annotation._
   textRepository: Option[TextRepository] = None,
   collectionRepository: Option[CiteCollectionRepository] = None,
   imageExtensions: Option[ImageExtensions] = None,
-  relationSet: Option[CiteRelationSet] = None
+  relationSet: Option[CiteRelationSet] = None,
+  dataModels: Option[Vector[DataModel]] = None
  ) {
 
   /** True if TextRepository is instantiated.
@@ -56,11 +56,77 @@ import scala.scalajs.js.annotation._
 
   /** True if ImageExtensions is instantiated.
   */
+  @deprecated
   def hasImageExtensions: Boolean = {
     imageExtensions match {
       case None => false
       case t: Some[ImageExtensions] => true
     }
+  }
+
+  /** True if DataModels is instantiated.
+  */
+  def hasDataModels: Boolean = {
+    dataModels match {
+      case None => { 
+        false 
+      }
+      case t:Some[Vector[DataModel]] if t.size > 0 => { 
+        true 
+      }
+      case _ => { 
+        false 
+      }
+    }
+  }
+
+  /** Returns true if a given model applies to a given URN
+  * @param modelUrn
+  * @param objectUrn
+  */
+  def modelApplies(modelUrn:Cite2Urn, objectUrn:Cite2Urn):Boolean = {
+    if (this.hasDataModels){
+      val c4m:Vector[Cite2Urn] = modelsForCollection(objectUrn)
+      val doesItApply:Boolean = {
+        if (c4m.size < 1) { 
+          false 
+        } else {
+          if ( c4m.contains(modelUrn)) { true } else { false }
+        }
+      }
+      doesItApply
+    } else {
+      false
+    }
+  }
+
+
+  /** Returns a vector of datamodels that apply to a given collection URN
+  * @param collUrn 
+  */
+  def modelsForCollection(collUrn:Cite2Urn):Vector[Cite2Urn] = {
+      val colls:Vector[Cite2Urn] = {
+        if (this.hasDataModels){
+          this.dataModels.get.filter( _.collection ~~ collUrn).map(m => m.model) 
+        } else {
+          Vector()
+        }
+      }
+      colls
+  }
+
+  /** Returns a [possibly empty] vector of collectionmodels that apply to a given data model
+  * @param modelUrn 
+  */
+  def collectionsForModel(modelUrn:Cite2Urn):Vector[Cite2Urn] = {
+      val datamodels:Vector[Cite2Urn] = {
+        if (this.hasDataModels) {
+          this.dataModels.get.filter( _.model ~~ modelUrn).map(m => m.collection) 
+        } else {
+          Vector()
+        }
+      }
+      datamodels 
   }
 
 
@@ -144,7 +210,7 @@ object CiteLibrary {
     }
   }
 
-  /** Create optional CITE Collecctions repository from CEX source.
+  /** Create optional CITE Collections repository from CEX source.
   *
   * @param cex Parsed CEX source.
   * @param delimiter  Column-delimiter used in CEX source.
@@ -156,6 +222,20 @@ object CiteLibrary {
       None
     } else {
       Some(relations)
+    }
+  }
+
+
+  /** Create option of vector of [[DataModel]]s from CEX source.
+  *
+  * @param cex Parsed CEX source.
+  * @param delimiter  Column-delimiter used in CEX source.
+  */
+  def dataModelsFromCex(cexString: String, delimiter: String = "#"): Option[Vector[DataModel]] = {
+    val dm:Vector[DataModel] = DataModel.vectorFromCex(cexString, delimiter)
+    dm.size match {
+      case 0 => None
+      case _ => Some(dm)
     }
   }
 
@@ -185,13 +265,13 @@ object CiteLibrary {
     val cex = CexParser(cexString)
     val libMap = libConfigMapFromCex(cex, delimiter)
     val nsVector = namespacesFromCex(cex,delimiter)
-
+    val dataModels = dataModelsFromCex(cexString,delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
     val imgExtensions = ImageExtensions(cexString,delimiter)
     val relationSet = relationsFromCex(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet,dataModels)
   }
 
 }

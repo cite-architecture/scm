@@ -42,12 +42,12 @@ import scala.scalajs.js.annotation._
    *
    *  @param cexSrc CEX source including a `datamodels`block.
    */
-   def vectorFromCex(cexSrc: String): Vector[DataModel] = {
+   def vectorFromCex(cexSrc: String, delimiter: String = "#" ): Vector[DataModel] = {
      val cex = CexParser(cexSrc)
      val dmSource = cex.blockVector("datamodels")
      dmSource.flatMap( s => {
        val rows = s.split("\n").drop(1)
-       rows.map(DataModel(_))
+       rows.map(DataModel(_,delimiter))
      } )
 
    }
