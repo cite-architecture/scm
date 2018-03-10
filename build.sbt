@@ -1,7 +1,6 @@
 name := "Scala CITE manager"
 
-//crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.4")
-crossScalaVersions in ThisBuild := Seq("2.12.4")
+crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.4")
 scalaVersion := (crossScalaVersions in ThisBuild).value.last
 
 
@@ -17,7 +16,7 @@ lazy val crossed = crossProject.in(file(".")).
     settings(
       name := "scm",
       organization := "edu.holycross.shot",
-      version := "5.3.0",
+      version := "5.3.1",
 
       licenses += ("GPL-3.0",url("https://opensource.org/licenses/gpl-3.0.html")),
       resolvers += Resolver.jcenterRepo,
@@ -29,13 +28,14 @@ lazy val crossed = crossProject.in(file(".")).
         "edu.holycross.shot.cite" %%% "xcite" % "3.2.2",
         "edu.holycross.shot" %%% "cex" % "6.1.0",
 
-        "edu.holycross.shot" %%% "ohco2" % "10.4.3",
-        "edu.holycross.shot" %%% "citeobj" % "6.0.0",
-        "edu.holycross.shot" %%% "citerelations" % "2.0.1"
+        "edu.holycross.shot" %%% "ohco2" % "10.5.3",
+        "edu.holycross.shot" %%% "citeobj" % "6.1.0",
+        "edu.holycross.shot" %%% "citerelations" % "2.0.2"
 
       )
     ).
     jvmSettings(
+      tutSourceDirectory := file("shared/src/main/tut")
     ).
     jsSettings(
       skip in packageJSDependencies := false,
@@ -43,5 +43,5 @@ lazy val crossed = crossProject.in(file(".")).
 
     )
 
-lazy val crossedJVM = crossed.jvm
-lazy val crossedJS = crossed.js.enablePlugins(ScalaJSPlugin)
+lazy val crossedJVM = crossed.jvm.enablePlugins(TutPlugin)
+lazy val crossedJS = crossed.js
