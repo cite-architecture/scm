@@ -1,5 +1,8 @@
 # Releases
 
+**5.3.2**: Updated libraries fix bug in parsing CEX source with multiple CTS catalog blocks.
+
+
 **5.3.1**: Updated dependency in `ohco2` library fixes a bug handling CEX serialization of CTS catalogs.
 
 **5.3.0**: Added methods for associating data models with CITE collections.
