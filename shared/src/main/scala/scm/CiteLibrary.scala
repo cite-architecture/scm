@@ -68,14 +68,14 @@ import scala.scalajs.js.annotation._
   */
   def hasDataModels: Boolean = {
     dataModels match {
-      case None => { 
-        false 
+      case None => {
+        false
       }
-      case t:Some[Vector[DataModel]] if t.size > 0 => { 
-        true 
+      case t:Some[Vector[DataModel]] if t.size > 0 => {
+        true
       }
-      case _ => { 
-        false 
+      case _ => {
+        false
       }
     }
   }
@@ -88,8 +88,8 @@ import scala.scalajs.js.annotation._
     if (this.hasDataModels){
       val c4m:Vector[Cite2Urn] = modelsForCollection(objectUrn)
       val doesItApply:Boolean = {
-        if (c4m.size < 1) { 
-          false 
+        if (c4m.size < 1) {
+          false
         } else {
           if ( c4m.contains(modelUrn)) { true } else { false }
         }
@@ -102,12 +102,12 @@ import scala.scalajs.js.annotation._
 
 
   /** Returns a vector of datamodels that apply to a given collection URN
-  * @param collUrn 
+  * @param collUrn
   */
   def modelsForCollection(collUrn:Cite2Urn):Vector[Cite2Urn] = {
       val colls:Vector[Cite2Urn] = {
         if (this.hasDataModels){
-          this.dataModels.get.filter( _.collection ~~ collUrn).map(m => m.model) 
+          this.dataModels.get.filter( _.collection ~~ collUrn).map(m => m.model)
         } else {
           Vector()
         }
@@ -116,17 +116,17 @@ import scala.scalajs.js.annotation._
   }
 
   /** Returns a [possibly empty] vector of collectionmodels that apply to a given data model
-  * @param modelUrn 
+  * @param modelUrn
   */
   def collectionsForModel(modelUrn:Cite2Urn):Vector[Cite2Urn] = {
       val datamodels:Vector[Cite2Urn] = {
         if (this.hasDataModels) {
-          this.dataModels.get.filter( _.model ~~ modelUrn).map(m => m.collection) 
+          this.dataModels.get.filter( _.model ~~ modelUrn).map(m => m.collection)
         } else {
           Vector()
         }
       }
-      datamodels 
+      datamodels
   }
 
 
@@ -183,6 +183,8 @@ object CiteLibrary {
   */
   def textRepoFromCex(cex: CexParser, delimiter: String) : Option[TextRepository] = {
 
+    // this fails.  It's really better handled in the cex lib's blockString fucntion though.
+    // Fix there and update dep in scm.
     val catalog = Catalog(cex.blockString("ctscatalog"),delimiter)
     val corpus = Corpus(cex.blockString("ctsdata"), delimiter)
     if ((catalog.size > 0) && (corpus.size > 0)) {

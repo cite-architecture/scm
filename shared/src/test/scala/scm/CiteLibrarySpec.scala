@@ -272,4 +272,31 @@ assert(noData.hasCollections == false)
 assert(noData.hasTexts == false)
 }
 
+  it should "build a library with repeated ctscatalog blocks" in  {
+
+    val twocats = """
+
+#!citelibrary
+name#demo
+urn#urn:cite2:cex:testcoll.2017a:hdt1node
+license#public domain
+
+#!ctscatalog
+urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
+urn:cts:greekLit:tlg0012.tlg001.va_xml:#book,line#Homeric epic#Iliad#HMT project archival XML edition##true#grc
+
+#!ctsdata
+urn:cts:greekLit:tlg0012.tlg001.va_xml:1.5#<l n="5" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0">οἰωνοῖσί τε πᾶσι· <persName n="urn:cite2:hmt:pers.r1:pers8">Διὸς</persName> δ' ἐτελείετο βουλή· </l>
+
+#!ctscatalog
+urn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang
+urn:cts:greekLit:tlg0012.tlg001.msA:#book,line#Homeric epic#Iliad#HMT project diplomatic edition##true#grc
+
+#!ctsdata
+urn:cts:greekLit:tlg0012.tlg001.msA:1.5#οἰωνοῖσί τε πᾶσι· Διὸς δ' ἐτελείετο βουλή·
+"""
+  val citeLib = CiteLibrary(twocats,"#",",")
+
+  }
+
 }
