@@ -1,5 +1,8 @@
 # Releases
 
+**5.3.2**: Update version of `ohco2` library.
+
+
 **5.3.2**: Updated libraries fix bug in parsing CEX source with multiple CTS catalog blocks.
 
 
