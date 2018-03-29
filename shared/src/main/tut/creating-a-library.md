@@ -6,7 +6,7 @@ layout: page
 
 Import the library:
 
-```scala
+```tut:silent
 import edu.holycross.shot.scm._
 ```
 
@@ -14,7 +14,7 @@ import edu.holycross.shot.scm._
 The simplest way to create a `CiteLibrary` is from data in CITE Exchange format (CEX). If `cex` is a string of data in CEF format, then you can create a new library like this:
 
 
-```scala
+```tut:silent
    val cex = "#!citelibrary\nname#demo\nurn#urn:cite2:cex:democex.2017_1:test\nlicense#public domain\n"
 
     val citeLibrary = CiteLibrary(cex, "#", ",")

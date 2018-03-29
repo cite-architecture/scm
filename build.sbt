@@ -35,6 +35,7 @@ lazy val crossed = crossProject.in(file(".")).
       )
     ).
     jvmSettings(
+      tutTargetDirectory := file("docs"),
       tutSourceDirectory := file("shared/src/main/tut")
     ).
     jsSettings(

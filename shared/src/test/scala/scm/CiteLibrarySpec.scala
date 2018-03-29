@@ -1,9 +1,7 @@
 package edu.holycross.shot.scm
 import org.scalatest.FlatSpec
-
 import edu.holycross.shot.cite._
-
-import java.net.URI // is this ok in JS?
+import java.net.URI
 
 class CiteLibrarySpec extends FlatSpec {
 
