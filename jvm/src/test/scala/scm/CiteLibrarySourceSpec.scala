@@ -5,7 +5,7 @@ import org.scalatest.FlatSpec
 class CiteLibrarySourceSpec extends FlatSpec {
 
 
-  val dmCex = "jvm/src/test/resources/datamodels.cex"
+  val dataModelCex = "jvm/src/test/resources/datamodels.cex"
 
 
   "A CiteLibrary" should "build a repository from a .cex file" in {
@@ -27,7 +27,7 @@ class CiteLibrarySourceSpec extends FlatSpec {
   }
 
   it should "correctly create an option of data models" in {
-    val citeRepo = CiteLibrarySource.fromFile(dmCex,"#")
+    val citeRepo = CiteLibrarySource.fromFile(dataModelCex,"#")
     assert(citeRepo.hasDataModels)
     val dms = citeRepo.dataModels.get
     val expectedModels = 3
@@ -36,7 +36,7 @@ class CiteLibrarySourceSpec extends FlatSpec {
 
 
   it should "find models applying to a given collection" in {
-    val citeRepo = CiteLibrarySource.fromFile(dmCex,"#")
+    val citeRepo = CiteLibrarySource.fromFile(dataModelCex,"#")
 
     val vaimg = Cite2Urn("urn:cite2:hmt:vaimg.2017a:")
     val vaimgModels = citeRepo.modelsForCollection(vaimg)
@@ -50,6 +50,28 @@ class CiteLibrarySourceSpec extends FlatSpec {
     assert(e4imgModels.size == expectedE4img)
 
   }
+  it should "find collections i a given implementing a give model" in {
+    val citeRepo = CiteLibrarySource.fromFile(dataModelCex,"#")
+
+    val binaryImgModel = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
+    val expectedBinaryImgCollections = 1
+    assert(citeRepo.collectionsForModel(binaryImgModel).size == expectedBinaryImgCollections)
+
+    val citableImgModel = Cite2Urn("urn:cite2:cite:datamodels.v1:imagemodel")
+    val expectedCitableImgCollections = 2
+    assert(citeRepo.collectionsForModel(citableImgModel).size == expectedCitableImgCollections)
+  }
+
+  it should "determine whether a given model applies to a given object" in {
+    val citeRepo = CiteLibrarySource.fromFile(dataModelCex,"#")
+    val binaryImgModel = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
+    val sampleImage = Cite2Urn("urn:cite2:hmt:vaimg.2017a:123@0.1,0.2,0.3,0.4")
+    assert (citeRepo.modelApplies(binaryImgModel,sampleImage))
+
+   val samplePage = Cite2Urn("urn:cite2:hmt:msA.v1:1r")
+   assert(citeRepo.modelApplies(binaryImgModel,samplePage) == false)
+  }
+
 
 
 
