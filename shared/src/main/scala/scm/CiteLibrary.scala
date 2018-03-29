@@ -30,7 +30,6 @@ import scala.scalajs.js.annotation._
   namespaces: Vector[CiteNamespace],
   textRepository: Option[TextRepository] = None,
   collectionRepository: Option[CiteCollectionRepository] = None,
-  imageExtensions: Option[ImageExtensions] = None,
   relationSet: Option[CiteRelationSet] = None,
   dataModels: Option[Vector[DataModel]] = None
  ) {
@@ -54,15 +53,7 @@ import scala.scalajs.js.annotation._
   }
 
 
-  /** True if ImageExtensions is instantiated.
-  */
-  @deprecated
-  def hasImageExtensions: Boolean = {
-    imageExtensions match {
-      case None => false
-      case t: Some[ImageExtensions] => true
-    }
-  }
+
 
   /** True if DataModels is instantiated.
   */
@@ -270,10 +261,9 @@ object CiteLibrary {
     val dataModels = dataModelsFromCex(cexString,delimiter)
     val textRepo = textRepoFromCex(cex, delimiter)
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
-    val imgExtensions = ImageExtensions(cexString,delimiter)
     val relationSet = relationsFromCex(cexString,delimiter)
 
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,imgExtensions,relationSet,dataModels)
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,relationSet,dataModels)
   }
 
 }

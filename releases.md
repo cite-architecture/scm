@@ -1,5 +1,8 @@
 # Releases
 
+
+**6.0.0**: Remove specialized handling of citable images, and defer to generic handling via data models.
+
 **5.3.2**: Update version of `ohco2` library.
 
 

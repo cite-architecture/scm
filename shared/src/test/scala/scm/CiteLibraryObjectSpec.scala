@@ -172,7 +172,6 @@ urn#urn:cite2:cex:democex.2017a:test
       case citeLib : CiteLibrary => {
         assert(citeLib.textRepository == None)
         assert(citeLib.collectionRepository == None)
-        assert(citeLib.imageExtensions == None)
         assert(citeLib.relationSet == None)
 
       }
