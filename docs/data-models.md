@@ -6,7 +6,7 @@ layout: page
 
 Import the library:
 
-```tut:silent
+```scala
 import edu.holycross.shot.scm._
 ```
 

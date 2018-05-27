@@ -8,9 +8,6 @@ import java.net.URI
 class DataModelSpec extends FlatSpec {
 
 
-  val testCex = "shared/src/test/resources/datamodels.cex"
-  val bigCex:String = Source.fromFile(testCex).getLines.mkString("\n")
-  val bigCiteLib = CiteLibrary(bigCex,"#",",")
 
   "The DataModel object" should "create a DataModel from a single line of CEX data" in {
     val cex = "urn:cite2:hmt:dse.2017a:#urn:cite2:dse:datamodel.v1:#DSE model#Diplomatic Scholarly Edition (DSE) model.  See documentation at <https://github.com/cite-architecture/dse>."
@@ -64,39 +61,9 @@ urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image
     assert(model1.model == expectedModel1)
   }
 
-  // The below rely on the CEX file in /shared/src/test/resources
-
-  it should "read a big CEX file with datamodels" in {
-    assert( bigCiteLib.hasDataModels )
-  }
-
-  it should "report which models apply to a given collection" in {
-    val hasTwo:Cite2Urn = Cite2Urn("urn:cite2:hmt:vaimg.2017a:")
-    val hasOne:Cite2Urn = Cite2Urn("urn:cite2:hmt:e4img.2017a:")
-
-    assert( bigCiteLib.modelsForCollection(hasTwo).size == 2)
-    assert( bigCiteLib.modelsForCollection(hasOne).size == 1)
-  }
-
-  it should "report which collection apply to a given model" in {
-    val hasTwo:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:imagemodel")
-    val hasOne:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
-    assert( bigCiteLib.collectionsForModel(hasTwo).size == 2)
-    assert( bigCiteLib.collectionsForModel(hasOne).size == 1)
-  }
-
-  it should "report true when given model applies to a given collection" in {
-    val myModel:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
-    val myUrn:Cite2Urn = Cite2Urn("urn:cite2:hmt:vaimg.2017a:123@0.1,0.2,0.3,0.4")
-    assert (bigCiteLib.modelApplies(myModel,myUrn))
-  }
-
-  it should "report false when given model does not apply to a given collection" in {
-    val myModel:Cite2Urn = Cite2Urn("urn:cite2:cite:datamodels.v1:binaryimg")
-    val myUrn:Cite2Urn = Cite2Urn("urn:cite2:hmt:msA.v1:1r")
-    assert (bigCiteLib.modelApplies(myModel,myUrn) == false )
-  }
- 
-
+  // Note that some tests that logically belong to the shared
+  // DataModels class are to be found in the jvm tests on
+  // CiteLibrarySource since it's easier to test some of these
+  // functions on a large library read from local file.
 
 }
