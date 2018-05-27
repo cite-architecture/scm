@@ -1,5 +1,6 @@
 # Releases
 
+**6.0.1**: Fixed bug that prevented compiling for SJS 2.11.
 
 **6.0.0**: Remove specialized handling of citable images, and defer to generic handling via data models.
 
