@@ -1,6 +1,8 @@
 # Releases
 
 
+**6.0.3**: But fixes in multiple dependencies.
+
 **6.0.2**:  Bug fix in `citeobj` dependency.
 
 **6.0.1**: Fixed bug that prevented compiling for SJS 2.11.
