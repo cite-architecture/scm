@@ -1,5 +1,6 @@
 # Releases
 
+**6.1.0**:  Updates in library dependencies.
 
 **6.0.3**: But fixes in multiple dependencies.
 
