@@ -259,8 +259,14 @@ object CiteLibrary {
     val libMap = libConfigMapFromCex(cex, delimiter)
     val nsVector = namespacesFromCex(cex,delimiter)
     val dataModels = dataModelsFromCex(cexString,delimiter)
+
+    println("Building text repo from cex ...")
     val textRepo = textRepoFromCex(cex, delimiter)
+
+    println("Building collection repo from cex ...")
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
+
+    println("Building relations from cex ...")
     val relationSet = relationsFromCex(cexString,delimiter)
 
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,relationSet,dataModels)

@@ -1,9 +1,8 @@
 # Releases
 
+**6.1.2**:  Harmonize with `ohco2` version 10.9.2.
 
 **6.1.1**:  Updates in library dependencies.
-
-
 
 **6.1.0**:  Updates in library dependencies.
 

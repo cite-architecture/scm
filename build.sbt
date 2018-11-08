@@ -16,7 +16,7 @@ lazy val crossed = crossProject.in(file(".")).
     settings(
       name := "scm",
       organization := "edu.holycross.shot",
-      version := "6.1.1",
+      version := "6.1.2",
 
       licenses += ("GPL-3.0",url("https://opensource.org/licenses/gpl-3.0.html")),
       resolvers += Resolver.jcenterRepo,
@@ -28,7 +28,7 @@ lazy val crossed = crossProject.in(file(".")).
         "edu.holycross.shot.cite" %%% "xcite" % "3.5.0",
         "edu.holycross.shot" %%% "cex" % "6.2.1",
 
-        "edu.holycross.shot" %%% "ohco2" % "10.9.0",
+        "edu.holycross.shot" %%% "ohco2" % "10.9.2",
         "edu.holycross.shot" %%% "citeobj" % "7.1.1",
         "edu.holycross.shot" %%% "citerelations" % "2.3.0"
 

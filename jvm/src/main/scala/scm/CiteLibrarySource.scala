@@ -11,8 +11,10 @@ object  CiteLibrarySource {
   * @param fileName File of CEX data.
   * @param delimiter String value delimiting columns of CEX data.
   */
-  def fromFile(fileName: String, delimiter: String = "#", delimiter2: String = ","): CiteLibrary = {
-    val cex = Source.fromFile(fileName).getLines.mkString("\n")
+  def fromFile(fileName: String, delimiter: String = "#", delimiter2: String = ",",
+  encoding: String = "UTF-8"): CiteLibrary = {
+
+    val cex = Source.fromFile(fileName, encoding).getLines.mkString("\n")
     CiteLibrary(cex, delimiter, delimiter2)
   }
 
