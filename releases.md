@@ -1,5 +1,7 @@
 # Releases
 
+**6.1.3**:  Harmonize with `citeojb` version 7.1.2.
+
 **6.1.2**:  Harmonize with `ohco2` version 10.9.2.
 
 **6.1.1**:  Updates in library dependencies.
