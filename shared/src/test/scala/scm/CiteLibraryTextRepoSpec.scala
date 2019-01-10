@@ -79,7 +79,7 @@ urn:cts:greekLit:tlg0016.tlg001.WRONGVERSION:1.0#This is the Showing forth of th
       val lib = CiteLibrary(conflicted,"#",",")
       fail("Should not have created library")
     } catch {
-      case iae: IllegalArgumentException => assert(iae.getMessage() == "requirement failed: Online catalog (1 texts) did not match works appearing in corpus (1 texts)")
+      case iae: IllegalArgumentException => assert(iae.getMessage().contains( "requirement failed: Online catalog (1 texts) did not match works appearing in corpus (1 texts)"))
       case t: Throwable => fail("Should have thrown IllegalArgumentException but got " + t)
     }
   }

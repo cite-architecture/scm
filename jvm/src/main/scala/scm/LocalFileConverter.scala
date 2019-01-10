@@ -26,7 +26,14 @@ object  LocalFileConverter {
       delimiter1 : String = "#",
       delimiter2 : String = ",",
       encoding: String = "UTF-8"): TextRepository = {
-    TextRepositorySource.fromFiles(invFileName,configFileName,baseDirectoryName, delimiter1, delimiter2, encoding)
+    TextRepositorySource.fromFiles(
+      invFileName,
+      configFileName,
+      baseDirectoryName,
+      delimiter = delimiter1,
+      delimiter2,
+      encoding
+    )
   }
 
 
