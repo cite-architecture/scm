@@ -1,5 +1,8 @@
 # Releases
 
+
+**6.2.1**: More library updates.
+
 **6.2.0**:  Updates to all library dependencies.
 
 **6.1.3**:  Harmonize with `citeojb` version 7.1.2.
