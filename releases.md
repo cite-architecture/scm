@@ -1,5 +1,6 @@
 # Releases
 
+**6.2.2**: OHCO2 to 10.12.5, CiteObj to 7.3.2.
 
 **6.2.1**: More library updates.
 

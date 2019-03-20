@@ -155,22 +155,30 @@ urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2
   // THESE TWO REQUIREMENTS SHOULD BE ENFORCED IN CiteCollectionRepository.  TEST WHEN UPGRADED LIB version
   // DOES THIS PROPERLy.
   it should "throw an exception if collections data and catalog conflict" in pending
-  /*{
+    /*
+    {
     val conflicted = """
 #!citelibrary
 license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 
-#!citecatalog
-urn:cite2:hmt:vaimg.2017a:#Images of the Venetus A manuscriptscript#urn:cite2:hmt:vaimg.2017a.caption:##CC-attribution-share-alike
-urn:cite2:hmt:vaimg.2017a.urn:#URN#Cite2Urn#
-urn:cite2:hmt:vaimg.2017a.caption:#Caption#String#
-urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
+#!citecollections
+URN#Description#Labelling property#Ordering property#License
+urn:cite2:fufolio:poxy2099.v1:#Papyrus POxy 2099#urn:cite2:fufolio:poxy2099.v1.label:#urn:cite2:fufolio:poxy2099.v1.sequence:#Public Domain
+
+#!citeproperties
+Property#Label#Type#Authority list
+urn:cite2:fufolio:poxy2099.v1.sequence:#Page sequence#Number#
+urn:cite2:fufolio:poxy2099.v1.urn:#URN#Cite2Urn#
+urn:cite2:fufolio:poxy2099.v1.rv:#Recto or Verso#String#recto,verso
+urn:cite2:fufolio:poxy2099.v1.label:#Label#String#
+urn:cite2:fufolio:poxy2099.v1.defaultimg:#Default image#Cite2Urn#
 
 #!citedata
-urn#caption#rights
-urn:cite2:hmt:vaimg.2017a:VA012RN_0013.WRONGVERSION#Natural light photograph of Venetus A: Marcianus Graecus Z. 454 (= 822), folio 12, recto#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
+NOTsequence#urn#rv#label#defaultimg
+0#urn:cite2:fufolio:poxy2099.v1:1#recto#P.Oxy 2099#urn:cite2:fufolio:papyri.2018a:POxy0017n2099a01
+
 """
     try {
       val lib = CiteLibrary(conflicted, "#",",")
@@ -180,7 +188,8 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013.WRONGVERSION#Natural light photograph of 
       case t: Throwable => fail("Should have thrown an IllegalArgument Exception: " + t)
     }
   }
-*/
+  */
+
   it should "return some collection if catalog and data are consistent" in  {
 
     val legit = """#!citelibrary
