@@ -138,6 +138,38 @@ import scala.scalajs.js.annotation._
 */
 object CiteLibrary {
 
+
+
+  /** Instantiate a [[CiteLibrary]] from its CEX serialization.
+  *
+  * @param cexString Data in CITE Exchange format.
+  * @param delimiter String value delimiting columns of CEX data.
+  * @param delimiter2 Secondary delimiter separating values within a  column of CEX data.
+  */
+  def cex(cexString: String, delimiter: String , delimiter2: String)  : CiteLibrary = {
+    val cex = CexParser(cexString)
+    val libMap = libConfigMapFromCex(cex, delimiter)
+    val nsVector = namespacesFromCex(cex,delimiter)
+    val dataModels = dataModelsFromCex(cexString,delimiter)
+
+    println("Building text repo from cex ...")
+    val textRepo = textRepoFromCex(cex, delimiter)
+
+    println("Building collection repo from cex ...")
+    val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
+
+    println("Building relations from cex ...")
+    val relationSet = relationsFromCex(cexString,delimiter)
+    println("All library components built.")
+    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,relationSet,dataModels)
+  }
+
+  def apply(cexString: String) : CiteLibrary = {
+    val delimiter: String = "#"
+    val delimiter2: String = ","
+    cex(cexString, delimiter, delimiter2)
+  }
+
   /** Create map of required library configuration values from CEX source.
   * CEX `citelibrary` block must include name and license configuration, and
   * a valid versioned URN identifying the library.
@@ -248,28 +280,5 @@ object CiteLibrary {
     nsList.toVector
   }
 
-  /** Create a [[CiteLibrary]].
-  *
-  * @param cexString Data in CITE Exchange format.
-  * @param delimiter String value delimiting columns of CEX data.
-  * @param delimiter2 Secondary delimiter separating values with a  column of CEX data.
-  */
-  def apply(cexString: String, delimiter: String, delimiter2: String)  : CiteLibrary = {
-    val cex = CexParser(cexString)
-    val libMap = libConfigMapFromCex(cex, delimiter)
-    val nsVector = namespacesFromCex(cex,delimiter)
-    val dataModels = dataModelsFromCex(cexString,delimiter)
-
-    println("Building text repo from cex ...")
-    val textRepo = textRepoFromCex(cex, delimiter)
-
-    println("Building collection repo from cex ...")
-    val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
-
-    println("Building relations from cex ...")
-    val relationSet = relationsFromCex(cexString,delimiter)
-
-    CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,relationSet,dataModels)
-  }
 
 }

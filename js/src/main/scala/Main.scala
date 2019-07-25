@@ -44,7 +44,7 @@ msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A)
 
 """
 
-      val citelib = CiteLibrary(cexSrc,"#",",")
+      val citelib = CiteLibrary(cexSrc)
       println("Made a CITE Library.")
       citelib.collectionRepository match {
         case None => println("But failed to make a collection repository fo it!")

@@ -4,7 +4,7 @@ crossScalaVersions in ThisBuild := Seq("2.11.8", "2.12.4")
 scalaVersion := (crossScalaVersions in ThisBuild).value.last
 
 
-lazy val root = project.in(file(".")).
+lazy val root  = project.in(file(".")).
     aggregate(crossedJVM, crossedJS).
     settings(
       publish := {},
@@ -16,7 +16,7 @@ lazy val crossed = crossProject.in(file(".")).
     settings(
       name := "scm",
       organization := "edu.holycross.shot",
-      version := "6.2.3",
+      version := "7.0.0",
 
       licenses += ("GPL-3.0",url("https://opensource.org/licenses/gpl-3.0.html")),
       resolvers += Resolver.jcenterRepo,

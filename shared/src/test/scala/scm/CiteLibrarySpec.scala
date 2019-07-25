@@ -12,7 +12,7 @@ name#demo
 urn#urn:cite2:cex:democex.2017_1:test
 license#public domain
 """
-    val citeLib = CiteLibrary(cex,"#",",")
+    val citeLib = CiteLibrary(cex)
     assert(citeLib.name == "demo")
     assert(citeLib.urn == Cite2Urn("urn:cite2:cex:democex.2017_1:test"))
     assert(citeLib.license == "public domain")
@@ -33,7 +33,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 """
 
 
-    val citeRepo = CiteLibrary(cex,"#",",")
+    val citeRepo = CiteLibrary(cex)
     assert(citeRepo.hasTexts)
   }
 
@@ -64,7 +64,7 @@ msA#2#urn:cite2:hmt:msA.v1:1v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A)
 msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 2r#urn:cite2:hmt:codex:msA
 """
 
-    val citeRepo = CiteLibrary(cex,"#",",")
+    val citeRepo = CiteLibrary(cex)
     val catalogedCollections = 1
       assert(citeRepo.collectionRepository.get.catalog.size == catalogedCollections)
     // 3 records, 6 properties
@@ -112,7 +112,7 @@ msA#2#urn:cite2:hmt:msA.v1:1v#verso#Marcianus Graecus Z. 454 (= 822) (Venetus A)
 msA#3#urn:cite2:hmt:msA.v1:2r#recto#Marcianus Graecus Z. 454 (= 822) (Venetus A) folio 2r#urn:cite2:hmt:codex:msA
 """
 
-    val citeLib = CiteLibrary(tinyCex,"#",",")
+    val citeLib = CiteLibrary(tinyCex)
     val ccRepo = citeLib.collectionRepository.get
 
     // 3 objects with 6 properties each:
@@ -132,7 +132,7 @@ license#public domain
 
 namespace#hmt#http://www.homermultitext.org/citens/hmt
 """
-    val citeLib = CiteLibrary(cexSrc,"#",",")
+    val citeLib = CiteLibrary(cexSrc)
     assert (citeLib.namespaces.size == 1)
     val ns = citeLib.namespaces(0)
     assert(ns.abbreviation == "hmt")
@@ -146,7 +146,7 @@ name#demo
 urn#urn:cite2:cex:testcoll.2017a:hdt1node
 """
   try {
-    val citeLib = CiteLibrary(cexSrc,"#",",")
+    val citeLib = CiteLibrary(cexSrc)
     fail("Should not have created library")
   } catch {
     case iae: IllegalArgumentException => assert(iae.getMessage() == "requirement failed: CEX `citelibrary` block must include a licensing statement")
@@ -164,7 +164,7 @@ urn#urn:cite2:cex:testcoll.2017a:hdt1node
 // license is never anything but a string:
 license#public domain
 """
-  val citeLib = CiteLibrary(cexSrc,"#",",")
+  val citeLib = CiteLibrary(cexSrc)
   assert(citeLib.name == "demo")
   assert(citeLib.urn == Cite2Urn("urn:cite2:cex:testcoll.2017a:hdt1node"))
   assert(citeLib.license == "public domain")
@@ -207,7 +207,7 @@ urn:cite2:hmt:vaimg.v1:#CITE image string#http://www.homermultitext.org/hmtdigit
 urn:cite2:hmt:vaimg.v1:#local jpeg#file://./images#urn:cite2:hmt:msA.v1.rights:
 urn:cite2:hmt:vaimg.v1:#local file string#./#urn:cite2:hmt:msA.v1.rights:
 """
-  val citeLib = CiteLibrary(cex,"#",",")
+  val citeLib = CiteLibrary(cex)
   assert(citeLib.hasCollections)
   assert(citeLib.hasTexts)
 
@@ -217,7 +217,7 @@ name#demo
 urn#urn:cite2:cex:testcoll.2017a:hdt1node
 license#public domain
 """
-  val noData = CiteLibrary(shortCex,"#", ",")
+  val noData = CiteLibrary(shortCex)
 assert(noData.hasCollections == false)
 assert(noData.hasTexts == false)
 }
@@ -245,7 +245,7 @@ urn:cts:greekLit:tlg0012.tlg001.msA:#book,line#Homeric epic#Iliad#HMT project di
 #!ctsdata
 urn:cts:greekLit:tlg0012.tlg001.msA:1.5#οἰωνοῖσί τε πᾶσι· Διὸς δ' ἐτελείετο βουλή·
 """
-  val citeLib = CiteLibrary(twocats,"#",",")
+  val citeLib = CiteLibrary(twocats)
 
   }
 

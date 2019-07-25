@@ -15,7 +15,7 @@ object  CiteLibrarySource {
   encoding: String = "UTF-8"): CiteLibrary = {
 
     val cex = Source.fromFile(fileName, encoding).getLines.mkString("\n")
-    CiteLibrary(cex, delimiter, delimiter2)
+    CiteLibrary.cex(cex, delimiter, delimiter2)
   }
 
 }

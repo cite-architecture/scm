@@ -1,5 +1,9 @@
 # Releases
 
+
+**7.0.0**: API-breaking change to `CiteLibrary` object's apply method.  Now assumes default values for delimiter strings,and adds new `cex` function to permit constructing a `CiteLibrary` object with explicit specification of delimiter strings.
+
+
 **6.2.3**  sync dependencies.
 
 

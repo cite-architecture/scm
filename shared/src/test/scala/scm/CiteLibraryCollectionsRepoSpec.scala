@@ -15,7 +15,7 @@ license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 """
-    val lib = CiteLibrary(noData, "#",",")
+    val lib = CiteLibrary(noData)
     assert(lib.collectionRepository == None)
   }
 
@@ -53,7 +53,7 @@ urn:cite2:hmt:vaimg.2017a.rights:#Rights#String#
 """
     //val collRepo = CiteLibrary.collectionRepoFromCex(noData,"#", ",")
 
-    val lib = CiteLibrary(noData, "#",",")
+    val lib = CiteLibrary(noData)
 
 
     lib.collectionRepository match {
@@ -79,7 +79,7 @@ urn#caption#rights
 urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017#Natural light photograph of Venetus A: Marcianus Graecus Z. 454 (= 822), folio 12, recto#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
 """
     try {
-      val lib = CiteLibrary(noCatalog, "#",",")
+      val lib = CiteLibrary(noCatalog)
       fail("Should not have made CiteLibrary")
     } catch {
       case iae: IllegalArgumentException => assert(iae.getMessage() ==  "requirement failed: CITE Collection data must be documented in a citecollections block")
@@ -125,7 +125,7 @@ urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2
 */
 
     it should "match URNs in properties" in  pending /*{
-      val orcaRepo = CiteCollectionRepository(orcacex,"#",",")
+      val orcaRepo = CiteCollectionRepository(orcacex)
       val orcaObjects = orcaRepo.citableObjects
       val orca1 = orcaObjects(0)
 
@@ -136,7 +136,7 @@ urn:cite2:hmt:clausereading.v1:clause11#urn:cts:greekLit:tlg0012.tlg001.fuPers:2
   /*{
     val iliad = CtsUrn("urn:cts:greekLit:tlg0012.tlg001:")
 
-    val lib = CiteLibrary(orcacex, "#",",")
+    val lib = CiteLibrary(orcacex)
     val colls = lib.collectionRepository.get
     val iliads = colls.urnMatch(iliad)
     val expectedIliads = 11
@@ -181,7 +181,7 @@ NOTsequence#urn#rv#label#defaultimg
 
 """
     try {
-      val lib = CiteLibrary(conflicted, "#",",")
+      val lib = CiteLibrary(conflicted)
       fail("Should not have made CiteLibrary")
     } catch {
       case iae: IllegalArgumentException => assert(iae.getMessage() ==  "requirement failed: ")
@@ -209,7 +209,7 @@ urn#caption#rights
 urn:cite2:hmt:vaimg.2017a:VA012RN_0013.2017a#Natural light photograph of Venetus A: Marcianus Graecus Z. 454 (= 822), folio 12, recto#This image was derived from an original ©2007, Biblioteca Nazionale Marciana, Venezie, Italia. The derivative image is ©2010, Center for Hellenic Studies. Original and derivative are licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. The CHS/Marciana Imaging Project was directed by David Jacobs of the British Library.
 """
 
-      val lib = CiteLibrary(legit, "#",",")
+      val lib = CiteLibrary(legit)
       lib.collectionRepository match {
         case crOpt: Some[CiteCollectionRepository] => assert(true)
         case _ => fail("Should have found CiteCollectionRepository")

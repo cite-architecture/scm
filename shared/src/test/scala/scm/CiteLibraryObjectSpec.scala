@@ -9,7 +9,7 @@ class CiteLibraryObjectSpec extends FlatSpec {
   "The CiteLibrary object" should "require a citelibrary block in CEX source" in {
     val noLibrary = "#!ctsdata\nurn:cts:greekLit:tlg0012.tlg001.eng1:1.1#Sing, goddess, the wrath of Achilles, son of Peleus"
     try {
-      val lib = CiteLibrary(noLibrary,"#",",")
+      val lib = CiteLibrary(noLibrary)
       fail ("Should not have created library")
     } catch {
       case cle: CiteLibraryException => assert(cle.message == "CEX source must include `citelibrary` block")
@@ -25,7 +25,7 @@ urn#urn:cite2:cex:democex.2017_1:test
 license#public domain
 """
     try {
-      val lib = CiteLibrary(noName,"#",",")
+      val lib = CiteLibrary(noName)
       fail ("Should not have created library")
     } catch {
       case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: CEX `citelibrary` block must include value for library name")
@@ -40,7 +40,7 @@ urn#urn:cite2:cex:democex.2017_1:test
 name#Demo library
 """
     try {
-      val lib = CiteLibrary(noName,"#",",")
+      val lib = CiteLibrary(noName)
       fail ("Should not have created library")
     } catch {
       case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: CEX `citelibrary` block must include a licensing statement")
@@ -55,7 +55,7 @@ license#public domain
 name#Demo library
 """
     try {
-      val lib = CiteLibrary(noName,"#",",")
+      val lib = CiteLibrary(noName)
       fail ("Should not have created library")
     } catch {
       case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: CEX `citelibrary` block must include a URN")
@@ -72,7 +72,7 @@ name#Demo library
 urn#not a urn
 """
     try {
-      val lib = CiteLibrary(badUrn,"#",",")
+      val lib = CiteLibrary(badUrn)
       fail ("Should not have created library")
     } catch {
       case iae : IllegalArgumentException => assert(iae.getMessage() == "requirement failed: wrong number of components in  'not a urn' (1)")
@@ -89,7 +89,7 @@ name#Demo library
 urn#urn:cite2:cex:democex:test
 """
     try {
-      val lib = CiteLibrary(noVersion,"#",",")
+      val lib = CiteLibrary(noVersion)
       fail ("Should not have created library")
     } catch {
       case cle : CiteLibraryException => assert(cle.message == "URN must include version identifier")
@@ -152,7 +152,7 @@ name#Iliadic Metrical Summaries
 urn#urn:cite2:hmt:cex.2017_1:metsumm
 license#Creative Commons Attribution, Non-Commercial 4.0 License <https://creativecommons.org/licenses/by-nc/4.0/>.
 """
-  val repo = CiteLibrary.collectionRepoFromCex(cex,"#",",")
+  val repo = CiteLibrary.collectionRepoFromCex(cex)
   repo match {
     case None => assert(true)
     case _ => fail("Should have returned None")
@@ -167,7 +167,7 @@ name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 """
 
-    val lib = CiteLibrary(noData,"#",",")
+    val lib = CiteLibrary(noData)
     lib match {
       case citeLib : CiteLibrary => {
         assert(citeLib.textRepository == None)
@@ -178,4 +178,16 @@ urn#urn:cite2:cex:democex.2017a:test
       case _ => fail("Should have created a CiteLibrary")
     }
   }
+
+
+    it should "assume default values for delimiters" in {
+    val minimum = """
+#!citelibrary
+license#public domain
+name#Demo library
+urn#urn:cite2:cex:democex.2017a:test
+"""
+      val lib = CiteLibrary(minimum)
+      assert(lib.license ==  "public domain")
+    }
 }

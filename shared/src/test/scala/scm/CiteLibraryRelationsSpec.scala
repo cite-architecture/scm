@@ -25,7 +25,7 @@ urn:cite2:hmt:vaimg.2017a:VA012RN_0013#urn:cite2:cite:dseverbs.2017a:illustrates
 """
 
   "The CiteLibrary object" should "create a relation set from CEX source" in {
-      val citeLib = CiteLibrary(cexSrc, "#",",")
+      val citeLib = CiteLibrary(cexSrc)
       assert(citeLib.relationSet.get.size == 6)
   }
 }

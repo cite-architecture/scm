@@ -15,7 +15,7 @@ license#public domain
 name#Demo library
 urn#urn:cite2:cex:democex.2017a:test
 """
-    val lib = CiteLibrary(noData,"#",",")
+    val lib = CiteLibrary(noData)
     lib.textRepository match {
       case None => assert(true)
       case _ => fail ("Should have returned None")
@@ -35,7 +35,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inq
 
 """
 
-    val lib = CiteLibrary(noCat,"#",",")
+    val lib = CiteLibrary(noCat)
     assert(lib.textRepository == None)
   }
   it should "return None if there is no text data content" in {
@@ -52,7 +52,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:#book/section#Herodotus#Histories#Englis
 
 """
 
-    val lib = CiteLibrary(noData,"#",",")
+    val lib = CiteLibrary(noData)
     assert(lib.textRepository == None)
   }
 
@@ -76,7 +76,7 @@ urn:cts:greekLit:tlg0016.tlg001.WRONGVERSION:1.0#This is the Showing forth of th
 """
 
     try {
-      val lib = CiteLibrary(conflicted,"#",",")
+      val lib = CiteLibrary(conflicted)
       fail("Should not have created library")
     } catch {
       case iae: IllegalArgumentException => assert(iae.getMessage().contains( "requirement failed: Online catalog (1 texts) did not match works appearing in corpus (1 texts)"))
@@ -99,7 +99,7 @@ urn:cts:greekLit:tlg0016.tlg001.loebeng:#book/section#Herodotus#Histories#Englis
 urn:cts:greekLit:tlg0016.tlg001.loebeng:1.0#This is the Showing forth of the Inquiry of Herodotus of Halicarnassos, to the end that neither the deeds of men may be forgotten by lapse of time, nor the works great and marvellous, which have been produced some by Hellenes and some by Barbarians, may lose their renown; and especially that the causes may be remembered for which these waged war with one another.
 
 """
-    val lib = CiteLibrary(cex,"#",",")
+    val lib = CiteLibrary(cex)
     lib.textRepository match {
       case trOpt : Some[TextRepository] => {
         assert(trOpt.get.catalog.size == 1)
