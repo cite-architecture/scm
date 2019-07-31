@@ -7,7 +7,7 @@
 
 It provides facilities for reading source data from CEX and other formats, and for serializing citable data to CEX.  The Scala CITE manager simplifies integrating texts, collections, relations, and image extensions in a single environment, including preparing the contents of a digital library for serving with [Scala Cite Services (scs)](https://github.com/cite-architecture/scs).
 
-## Current version: 7.0.0
+## Current version: 7.0.1
 
 
 Status:  **active development**. [Release notes](releases.md)
