@@ -1,5 +1,8 @@
 # Releases
 
+
+**7.1.0**: Add `fromUrl` function to `CiteLibrarySource` object.
+
 **7.0.1**: Bug-fixing updates in library dependencies.
 
 

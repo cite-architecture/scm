@@ -72,7 +72,12 @@ class CiteLibrarySourceSpec extends FlatSpec {
    assert(citeRepo.modelApplies(binaryImgModel,samplePage) == false)
   }
 
+  it should "build a library from a URL referring to CEX source" in {
+    println("BUILD A LIBRARY FROM URL")
+    val releaseUrl = "https://raw.githubusercontent.com/homermultitext/hmt-archive/master/releases-cex/hmt-2018e.cex"
 
-
+    val lib = CiteLibrarySource.fromUrl(releaseUrl)
+    println("BUILT IT")
+  }
 
 }
