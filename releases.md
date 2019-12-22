@@ -1,5 +1,6 @@
 # Releases
 
+**7.2.0** Add logging support, update library dependencies.
 
 **7.1.0**: Add `fromUrl` function to `CiteLibrarySource` object.
 

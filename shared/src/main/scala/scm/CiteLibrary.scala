@@ -8,6 +8,11 @@ import edu.holycross.shot.citerelation._
 
 import java.net.URI
 
+
+import wvlet.log._
+import wvlet.log.LogFormatter.SourceCodeLogFormatter
+
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 
@@ -23,7 +28,7 @@ import scala.scalajs.js.annotation._
 * @param collectionRepository Optional, cataloged set of CITE Collections. (Not used in current version.)
 * @param relationSet Optional set of triple statements.
 */
-@JSExportAll  case class  CiteLibrary (
+@JSExportAll  case class  CiteLibrary(
   name: String,
   urn: Cite2Urn,
   license: String,
@@ -32,7 +37,7 @@ import scala.scalajs.js.annotation._
   collectionRepository: Option[CiteCollectionRepository] = None,
   relationSet: Option[CiteRelationSet] = None,
   dataModels: Option[Vector[DataModel]] = None
- ) {
+ )  extends LogSupport  {
 
   /** True if TextRepository is instantiated.
   */
@@ -136,7 +141,7 @@ import scala.scalajs.js.annotation._
 /** Factory for creating [[CiteLibrary]] objects from
 * a String in CEX format.
 */
-object CiteLibrary {
+object CiteLibrary extends LogSupport {
 
 
 
@@ -152,15 +157,15 @@ object CiteLibrary {
     val nsVector = namespacesFromCex(cex,delimiter)
     val dataModels = dataModelsFromCex(cexString,delimiter)
 
-    println("Building text repo from cex ...")
+    info("Building text repo from cex ...")
     val textRepo = textRepoFromCex(cex, delimiter)
 
-    println("Building collection repo from cex ...")
+    info("Building collection repo from cex ...")
     val collectionRepo = collectionRepoFromCex(cexString,delimiter,delimiter2)
 
-    println("Building relations from cex ...")
+    info("Building relations from cex ...")
     val relationSet = relationsFromCex(cexString,delimiter)
-    println("All library components built.")
+    info("All library components built.")
     CiteLibrary(libMap("name"),Cite2Urn(libMap("urn")),libMap("license"),nsVector, textRepo,collectionRepo,relationSet,dataModels)
   }
 
