@@ -12,6 +12,6 @@ import java.net.URI
 * @param uri Unique URI for namespace.
 *
 */
-@JSExportAll  case class  CiteNamespace(abbreviation: String,uri: URI) {
+@JSExportAll  case class  CiteNamespace(abbreviation: String, uri: URI) {
 
 }
