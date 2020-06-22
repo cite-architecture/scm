@@ -39,9 +39,10 @@ Alternatively, the `CiteLibrary` object can create a library from a String in CE
 
 Here's an equivalent library created from a CEX string.
 
-```scala mdoc
+```scala mdoc:silent
 
-val cexString = """ "#!citelibrary
+val cexString = """
+#!citelibrary
 name#Absolute minimum CITE library
 urn#urn:cite2:scm:guideexamples.v1:minimum
 license#Public domain

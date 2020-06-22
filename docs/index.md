@@ -46,27 +46,13 @@ Alternatively, the `CiteLibrary` object can create a library from a String in CE
 Here's an equivalent library created from a CEX string.
 
 ```scala
-val cexString = """ "#!citelibrary
+
+val cexString = """
+#!citelibrary
 name#Absolute minimum CITE library
 urn#urn:cite2:scm:guideexamples.v1:minimum
 license#Public domain
 namespace#scm#http://cite-architecture.org/demons/scm
 """
-// cexString: String = """ "#!citelibrary
-// name#Absolute minimum CITE library
-// urn#urn:cite2:scm:guideexamples.v1:minimum
-// license#Public domain
-// namespace#scm#http://cite-architecture.org/demons/scm
-// """
 val citeLibrary = CiteLibrary(cexString)
-// citeLibrary: CiteLibrary = CiteLibrary(
-//   "Absolute minimum CITE library",
-//   Cite2Urn("urn:cite2:scm:guideexamples.v1:minimum"),
-//   "Public domain",
-//   Vector(CiteNamespace("scm", http://cite-architecture.org/demons/scm)),
-//   None,
-//   None,
-//   None,
-//   None
-// )
 ```
