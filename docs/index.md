@@ -3,7 +3,7 @@ layout: page
 title: Scala CITE manager
 ---
 
-**Version 7.3.1**.
+**Version 7.3.2**.
 
 
 A `CiteLibrary` contains required metadata about a library, and may optionally contain a `TextRepository`, a `CiteCollectionRepository` or other CITE repository objects.
