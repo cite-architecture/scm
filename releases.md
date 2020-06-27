@@ -1,5 +1,7 @@
 # Releases
 
+**7.3.2**: Further bug fixes in `ohco2` library.
+
 **7.3.1**: Bug fixes in `ohco2` library.
 
 **7.3.0**: Support ScalaJS 1.0.
