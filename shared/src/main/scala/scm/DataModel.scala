@@ -23,7 +23,13 @@ import scala.scalajs.js.annotation._
   model: Cite2Urn,
   label: String,
   description: String
- )
+ ) {
+
+   def cex( delimiter: String = "#"): String = {
+    s"""${this.collection}${delimiter}${this.model}${delimiter}${this.label}${delimiter}${this.description}"""
+   }
+   
+}
 
 
  object DataModel {
@@ -51,4 +57,7 @@ import scala.scalajs.js.annotation._
      } )
 
    }
+
+
+
  }

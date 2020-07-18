@@ -61,6 +61,27 @@ urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image
     assert(model1.model == expectedModel1)
   }
 
+ it should "serialize a DataModel to CEX" in {
+    val block = """#!datamodels
+Collection#Model#Label#Description
+urn:cite2:hmt:binaryimg.v1:#urn:cite2:cite:datamodels.v1:binaryimg#Binary image model#implementation of binary image retrieval using IIPServ.  See documentation at <TBA>.
+urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image model#CITE architecture model of citable images.  See documentation at <http://cite-architecture.github.io/imagemodel/>.
+"""
+    val models = DataModel.vectorFromCex(block)
+    assert(models.size == 2)
+
+    val model0 = models(0)
+    val model1 = models(1)
+
+    val cex0 = "urn:cite2:hmt:binaryimg.v1:#urn:cite2:cite:datamodels.v1:binaryimg#Binary image model#implementation of binary image retrieval using IIPServ.  See documentation at <TBA>."
+    val cex1 = "urn:cite2:hmt:vaimg.2017a:#urn:cite2:cite:datamodels.v1:imagemodel#Citable image model#CITE architecture model of citable images.  See documentation at <http://cite-architecture.github.io/imagemodel/>."
+
+    assert(model0.cex("#") == cex0)
+    assert(model1.cex("#") == cex1)
+
+  }
+
+
   // Note that some tests that logically belong to the shared
   // DataModels class are to be found in the jvm tests on
   // CiteLibrarySource since it's easier to test some of these

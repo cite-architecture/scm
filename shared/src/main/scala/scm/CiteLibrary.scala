@@ -135,6 +135,110 @@ import scala.scalajs.js.annotation._
     }
   }
 
+  /** Serialize a CiteLibrary to CEX
+  *
+  * @param delimiter  Column-delimiter used in CEX source.
+  */
+  def cex(delimiter: String = "#"): String = {
+
+    // Header block
+    val headerBlock: String = {
+      Vector(
+        "\n#!cexversion\n3.0.1\n\n#!citelibrary",
+        s"name${delimiter}${this.name}",
+        s"urn${delimiter}${this.urn}",
+        s"license${delimiter}${this.license}",
+      ).mkString("\n")
+    }
+
+    // Namespaces
+    val namespaceBlock: String = {
+      val commentLine = "// CITE namespace definitions"
+      val nsVec: Vector[String] = this.namespaces.map( ns => {
+        s"namespace${delimiter}${ns.abbreviation}${delimiter}${ns.uri}"
+      })
+      if (nsVec.size > 0) {
+        (Vector(commentLine) ++ nsVec).mkString("\n") 
+      } else {
+        ""
+      }
+    }
+
+    // TextRepository (catalog and data grouped by text)
+    val textBlock: String = {
+
+        this.textRepository match {
+          case None => ""
+          case Some(tr) => {
+            val textBlocks: Vector[String] = tr.catalog.texts.map(tc => {
+              val catBlock: String = s"""#!ctscatalog\nurn#citationScheme#groupName#workTitle#versionLabel#exemplarLabel#online#lang\n${tc.cex("#")}"""
+              val corp: String = {
+                (tr.corpus ~= tc.urn).cex("#")
+              }
+              val corpBlock: String = s"#!ctsdata\n${corp}"
+              catBlock + "\n\n" + corpBlock
+            })
+            textBlocks.mkString("\n\n")
+          }
+        }
+    }
+
+    // CollectionRepository (by collection)
+    val collectionBlock: String = {
+      this.collectionRepository match {
+        case None => ""
+        case Some(cr) => {
+          cr.cex()
+        }
+      }
+    }
+
+    // RelationSets (by verb)
+    val relationsBlock: String = {
+      this.relationSet match {
+        case None => ""
+        case Some(rs) => {
+          val relationVec: Vector[CiteTriple] = rs.relations.toVector
+          val byVerb: Vector[Vector[CiteTriple]] = {
+            relationVec.groupBy(_.relation).toVector.map(_._2)
+          }
+          val cexChunks: Vector[String] = byVerb.map( vv => {
+            val sortVec: Vector[CiteTriple] = vv.sortBy(_.urn1.toString)
+            val commentLine: String = {
+              s"// relations with: ${sortVec.head.relation}\n#!relations"
+            }
+            val otherLines: Vector[String] = sortVec.map(_.cex("#"))
+            (commentLine +: otherLines).mkString("\n")
+          })
+          cexChunks.mkString("\n\n")
+        }
+      }
+    }
+
+    // DataModels (???)
+    val dataModelBlock: String = {
+      val headerLine = "#!datamodels\nCollection#Model#Label#Description"
+      this.dataModels match {
+        case None => ""
+        case Some(dmv) => {
+          val cexVec: Vector[String] = dmv.map(_.cex("#"))
+          (headerLine +: cexVec).mkString("\n")
+        }
+      }
+    }
+
+    Vector(
+      headerBlock,
+      namespaceBlock,
+      dataModelBlock,
+      textBlock,
+      collectionBlock,
+      relationsBlock
+    ).mkString("\n\n")
+
+  }
+
+
 }
 
 
@@ -284,6 +388,9 @@ object CiteLibrary extends LogSupport {
     }
     nsList.toVector
   }
+
+
+
 
 
 }
