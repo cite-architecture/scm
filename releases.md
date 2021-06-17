@@ -1,5 +1,7 @@
 # Releases
 
+**7.4.1**: Artifact published now at https://terracotta.hpcc.uh.edu/nexus/repository/maven-releases/
+
 **7.4.0**: Serialize an entire CITE Library to CEX.
 
 **7.3.2**: Further bug fixes in `ohco2` library.

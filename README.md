@@ -7,7 +7,7 @@
 
 It provides facilities for reading source data from CEX and other formats, and for serializing citable data to CEX.  The Scala CITE manager simplifies integrating texts, collections, relations, and image extensions in a single environment, including preparing the contents of a digital library for serving with [Scala Cite Services (scs)](https://github.com/cite-architecture/scs).
 
-## Current version: 7.4.0
+## Current version: 7.4.1
 
 
 Status:  **active development**. [Release notes](releases.md)
@@ -18,9 +18,13 @@ Status:  **active development**. [Release notes](releases.md)
 
 ## Using, building and testing
 
-`scm` can be built for both the JVM and ScalaJS using any version of Scala from 2.11 onwards.  Binaries for 2.12  are available from jcenter.  If you are using sbt, include `Resolver.jcenterRepo`in your list of resolvers
+`scm` can be built for both the JVM and ScalaJS using any version of Scala from 2.11 onwards.  Binaries for all three versions are available from the Nexus repository on <terracotta.hpcc.uh.edu/nexus>.
 
-    resolvers += Resolver.jcenterRepo
+If you are using sbt, include `Resolver.jcenterRepo` in your list of resolvers
+
+```scala
+	resolvers += "Nexus" at "https://terracotta.hpcc.uh.edu/nexus/repository/maven-releases/",
+```
 
 and  add this to your library dependencies:
 
